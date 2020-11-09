@@ -29,5 +29,19 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
+# Any titles/heading of english text presented on the view is written and referred here!
+# This makes it more modular and clear!
 en:
-  hello: "Hello world"
+  home_title: "Welcome to Whamazone!"
+  home_description: "The best (and even better) e-commerce business since 2020!"
+  home_event1: "Got Lockdown'd? We have toilet paper in stock!"
+
+  contact_title: "Need customer support?"
+  contact_description: "We have it available all-day everyday 24/7!*"
+  contact_disclaimer: "*Disclaimer: Our customer support is non-existent"
+
+  about_title: "About Us"
+  about_description: "The Whamazone Wikipedia - Everything you need to know about us."
+  about_heading1: "Why the name \"Whamazone\"?"
+  about_heading2: "Author - Andy Lee"
+  about_message: "I hope you enjoy viewing my coursework Andrew!"

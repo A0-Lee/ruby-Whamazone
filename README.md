@@ -37,7 +37,7 @@ Any concerns or issues related to the project are addressed here in this file (e
 
 Testing and Development:
 -----------------------------------------
-I will be testing this Rails application under the latest released version of Ubuntu Linux (using VMware on Windows 10) and Chrome browser at the time and date of submission.
+I will be testing this Rails application under the latest released version of Ubuntu Linux 64-bit (using VMware on Windows 10) along with the latest version of the Chrome browser at the time and date of submission.
 
 
 Copyright Disclaimer:
