@@ -32,7 +32,7 @@ Rails - 5.2.4.4
 
 Author Notes:
 -----------------------------------------
-Any concerns or issues related to the project are addressed here in this file (e.g. copyright issues, design and code issues etc.).
+Any documentation and concerns or issues related to the project are addressed here in this file (e.g. copyright issues, design and code issues etc.).
 
 
 Testing and Development:

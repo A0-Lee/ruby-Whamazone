@@ -35,6 +35,8 @@ en:
   home_title: "Welcome to Whamazone!"
   home_description: "The best (and even better) e-commerce business since 2020!"
   home_event1: "Got Lockdown'd? We have toilet paper in stock!"
+  home_event2: "Have goods to sell? List them as a third-party seller!"
+  home_event3: "We hope you have an excellent day, Whamazone customer!"
 
   contact_title: "Need customer support?"
   contact_description: "We have it available all-day everyday 24/7!*"
@@ -43,5 +45,6 @@ en:
   about_title: "About Us"
   about_description: "The Whamazone Wikipedia - Everything you need to know about us."
   about_heading1: "Why the name \"Whamazone\"?"
-  about_heading2: "Author - Andy Lee"
   about_message: "I hope you enjoy viewing my coursework Andrew!"
+
+  footer_author: "Made by - Andy Lee"

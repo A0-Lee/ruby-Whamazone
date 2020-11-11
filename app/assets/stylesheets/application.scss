@@ -10,6 +10,38 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+@import "bootstrap";
+
+// Adds padding on view to ease user readability
+.margin-center {
+  padding: 1rem 2rem 2rem;
+}
+
+.alert {
+  padding: 0.5rem;
+}
+
+// Override text-decoration: none; by using !important statement - otherwise no color would show
+.navbar-brand {
+  color: #FFCC5C !important;
+  font-size: 1.5rem;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #FBFBFB;
+  border-top-style: solid;
+  border-width: thin;
+  border-color: #DFDDDA;
+}
+
+.footer-container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}

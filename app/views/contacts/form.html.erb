@@ -1,6 +1,6 @@
 <h1><%=t('contact_title')%></h1>
 <p><%=t('contact_description')%></p>
-<h6><%=t('contact_disclaimer')%></h6>
+<p class="font-italic font-weight-bold"><%=t('contact_disclaimer')%></p>
 
 <%= form_with scope: :contact, url: contacts_path, local: true do |form| %>
 <p>

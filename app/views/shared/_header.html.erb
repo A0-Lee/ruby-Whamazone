@@ -1,0 +1,26 @@
+<%# Parial view for a header for every view page
+Inserted into the application.html.erb file %>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="<%= main_home_path %>">Whamazone</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="<%= main_home_path %>">Home
+            <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= contacts_form_path %>">Contact<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= main_about_path %>">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="<%= %>">Log in</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
