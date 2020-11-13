@@ -2,14 +2,10 @@ Rails.application.routes.draw do
   # Establish route URL to these controller/view
   get 'main/home'
   get 'main/about'
-
   get 'contacts/form'
 
-  get 'products/new'
-
-  # Declares a standard REST (Representational State Transfer) resource
-  # In this case, submitting a POST request from contacts/form to our database
-  resources :contacts
+  # Shortens contacts_request_form to request_form in url - used for POST method only
+  post 'request_form', to:'contacts#request_form'
 
   # This is the main home page the user will first load into
   root 'main#home'

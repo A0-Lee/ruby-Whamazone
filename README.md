@@ -35,6 +35,12 @@ Author Notes:
 Any documentation and concerns or issues related to the project are addressed here in this file (e.g. copyright issues, design and code issues etc.).
 
 
+Database Schema and Migrations:
+-----------------------------------------
+Rails uses a Model/Migration system to handle database tables and fields using sqlite3.
+Any Models/Migrations used will be listed here:
+
+
 Testing and Development:
 -----------------------------------------
 I will be testing this Rails application under the latest released version of Ubuntu Linux 64-bit (using VMware on Windows 10) along with the latest version of the Chrome browser at the time and date of submission.

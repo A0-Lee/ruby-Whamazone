@@ -32,19 +32,38 @@
 # Any titles/heading of english text presented on the view is written and referred here!
 # This makes it more modular and clear!
 en:
-  home_title: "Welcome to Whamazone!"
-  home_description: "The best (and even better) e-commerce business since 2020!"
-  home_event1: "Got Lockdown'd? We have toilet paper in stock!"
-  home_event2: "Have goods to sell? List them as a third-party seller!"
-  home_event3: "We hope you have an excellent day, Whamazone customer!"
+  contacts:
+    request_form:
+      form_sent: "Form has successfully been received!"
+    form:
+      contact_title: "Need customer support?"
+      contact_description: "We have it available all-day everyday 24/7!*"
+      contact_disclaimer: "*Disclaimer: Our customer support is non-existent"
+      name: "Name:"
+      name_placeholder: "John Smith"
+      enter_name: "Enter your name"
+      email: "Email:"
+      email_placeholder: "email@address.com"
+      enter_email: "Enter your email address"
+      telephone: "Telephone:"
+      telephone_placeholder: "01234 567891"
+      enter_telephone: "Enter your telephone number"
+      message: "Message:"
+      message_placeholder: "Enter your message here"
+      enter_message: "Enter your message here"
+      submit: "Submit"
 
-  contact_title: "Need customer support?"
-  contact_description: "We have it available all-day everyday 24/7!*"
-  contact_disclaimer: "*Disclaimer: Our customer support is non-existent"
+  main:
+    home:
+      home_title: "Welcome to Whamazone!"
+      home_description: "The best (and even better) e-commerce business since 2020!"
+      home_event1: "Got Lockdown'd? We have toilet paper in stock!"
+      home_event2: "Have goods to sell? List them as a third-party seller!"
+      home_event3: "We hope you have an excellent day, Whamazone customer!"
 
-  about_title: "About Us"
-  about_description: "The Whamazone Wikipedia - Everything you need to know about us."
-  about_heading1: "Why the name \"Whamazone\"?"
-  about_message: "I hope you enjoy viewing my coursework Andrew!"
+    about:
+      about_title: "About Us"
+      about_description: "The Whamazone Wikipedia - Everything you need to know about us."
+      about_heading1: "Why the name \"Whamazone\"?"
 
-  footer_author: "Made by - Andy Lee"
+  footer_author: "Made by: Andy Lee"

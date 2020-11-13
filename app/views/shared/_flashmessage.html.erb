@@ -1,0 +1,10 @@
+<%# For each message loaded into the flash container
+Output each message in HTML for the user can see in the view %>
+  <% flash.each do |flash_type, content| %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%= content %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% end %>
