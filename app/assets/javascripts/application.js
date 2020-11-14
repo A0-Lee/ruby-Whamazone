@@ -18,4 +18,5 @@
 //= require bootstrap-sprockets
 //= require hiddenmessage
 //= require bannermessage
+//= require activeheader
 //= require_tree .

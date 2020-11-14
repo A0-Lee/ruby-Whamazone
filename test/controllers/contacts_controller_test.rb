@@ -13,8 +13,6 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should post request form" do
-    #post request_form_url, params:
-    #{name: "John Smith", email: "johnsmith@email.com", telephone: "0123 567891", message: "test"}
     post request_form_url, params: {form: {name: 'John Smith', email: 'johnsmith@email.com', telephone: '0123 567891', message: 'test message'}}
 
     assert_response :redirect

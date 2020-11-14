@@ -35,6 +35,7 @@ en:
   contacts:
     request_form:
       form_sent: "Form has successfully been received!"
+
     form:
       contact_title: "Need Customer Support?"
       contact_description: "We have it available all-day everyday 24/7!*"
@@ -59,11 +60,26 @@ en:
       home_description: "The best (and even better) e-commerce business since 2020!"
       home_event1: "Got Lockdown'd? We have toilet paper in stock!"
       home_event2: "Have goods to sell? List them as a third-party seller!"
-      home_event3: "We hope you have an excellent day, Whamazone customer!"
+      home_event3: "Is the Pandemic bringing you down? Our prices feel the same!"
+      home_event4: "Thank you for shopping with us, Whamazone customer!"
 
     about:
       about_title: "About Us"
       about_description: "The Whamazone Wikipedia - Everything you need to know about us."
       about_heading1: "Why the name \"Whamazone\"?"
 
-  footer_author: "Made by: Andy Lee"
+    contact:
+      contact_title: "Contact Us"
+      contact_description: "See our FAQ and our Customer Support section below for assistance:"
+      contact_cardtitle1: "Frequently Asked Questions (FAQ)"
+      contact_cardtitle2: "Customer Support"
+      contact_question1: "Where can I contact Customer Support?"
+      contact_answer1: "You can fill out our Customer Form using this link:"
+      contact_question2: "Where is my purchase order receipt/email?"
+      contact_answer2: "We don't show any order confirmation!"
+      contact_question3: "When will my parcel arrive?"
+      contact_answer3: "At Whamazone, we're experimenting with new technology that will bring the digitalization of goods through your own computer screen!"
+      contact_question4: "How can I cancel my recently placed order?"
+      contact_answer4: "No worries! All orders are non-existent anyways."
+
+  footer_author: "Project by: Andy Lee"

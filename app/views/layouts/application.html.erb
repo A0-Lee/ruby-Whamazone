@@ -11,10 +11,12 @@
     </head>
 
     <body>
-      <%= render 'shared/header' %>
-      <div class="margin-center">
-        <%= yield %>
+      <div id="wrapper">
+        <%= render 'shared/header' %>
+        <div class="margin-center">
+          <%= yield %>
+        </div>
+        <%= render 'shared/footer' %>
       </div>
-      <%= render 'shared/footer' %>
     </body>
   </html>
