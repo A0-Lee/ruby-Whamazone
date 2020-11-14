@@ -17,4 +17,5 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require hiddenmessage
+//= require bannermessage
 //= require_tree .

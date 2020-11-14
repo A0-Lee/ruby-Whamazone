@@ -36,7 +36,7 @@ en:
     request_form:
       form_sent: "Form has successfully been received!"
     form:
-      contact_title: "Need customer support?"
+      contact_title: "Need Customer Support?"
       contact_description: "We have it available all-day everyday 24/7!*"
       contact_disclaimer: "*Disclaimer: Our customer support is non-existent"
       name: "Name:"

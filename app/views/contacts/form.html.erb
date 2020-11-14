@@ -2,7 +2,7 @@
 <p><%=t('.contact_description')%></p>
 <p class="font-italic font-weight-bold"><%=t('.contact_disclaimer')%></p>
 
-<%= form_with scope: :form, url: request_form_path, method: 'post', local: true do |form| %>
+<%= form_with scope: :form, url: request_form_url, method: 'post', local: true do |form| %>
 <p>
   <%= form.label :name, t(".name") %><br>
   <%= form.text_field :name, title: t(".enter_name"), size: 30, placeholder: t(".name_placeholder"), :required => true %>

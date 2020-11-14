@@ -64,3 +64,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Additional Gem packages - manually selected
 gem 'bootstrap', '>= 4.5.2'
 gem 'jquery-rails', '>= 4.4.0'
+gem 'rails-controller-testing', '>= 1.0.5'
