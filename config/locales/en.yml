@@ -32,6 +32,47 @@
 # Any titles/heading of english text presented on the view is written and referred here!
 # This makes it more modular and clear!
 en:
+  users:
+    login:
+      login_title: "Login with your Whamazone Account"
+      login_description: "Login as a Whamazone customer."
+      login_direct_to_signup: "Don't have an existing account?"
+      email: "Email:"
+      enter_email: "Enter your email"
+      email_placeholder: "Enter your email"
+      password: "Password:"
+      enter_password: "Enter your password"
+      password_placeholder: "Enter your password"
+      login_button: "Login"
+      login_successful: "You have successfully logged in!"
+
+
+    signup:
+      signup_title: "Sign-up today as a Whamazone customer!"
+      signup_description: "We offer several benefits towards being an existing customer:"
+      signup_benefit1: "Faster checkout with your details saved"
+      signup_benefit2: "Be heard by the community with your product reviews"
+      signup_benefit3: "See your order history with ease"
+      username: "Username:"
+      enter_username: "Enter your username"
+      username_placeholder: "This is your online alias for others to see."
+      name: "Full Name:"
+      enter_name: "Enter your full name"
+      name_placeholder: "This is your real-life name."
+      email: "Email:"
+      enter_email: "Enter your email"
+      email_placeholder: "You will be using this to login."
+      password: "Password:"
+      enter_password: "Enter your password"
+      password_placeholder: "Remember this!"
+      confirm_password: "Confrim Password:"
+      enter_confirm_password: "Confirm your password"
+      confirm_password_placeholder: "Enter the same password."
+      signup_button: "Sign-up!"
+      signup_successful: "You've Signed up successfully!"
+      signup_fail: "Sign-up failed!"
+
+
   contacts:
     request_form:
       form_sent: "Form has successfully been received!"
@@ -62,6 +103,10 @@ en:
       home_event2: "Have goods to sell? List them as a third-party seller!"
       home_event3: "Is the Pandemic bringing you down? Our prices feel the same!"
       home_event4: "Thank you for shopping with us, Whamazone customer!"
+      home_event5: "Enjoying your new product? Leave a quick review!"
+      home_event6: "Tell your friends about Whamazone!"
+      home_event7: "Our business practices are more ethical compared to our competitors!"
+      home_event8: "Don't forget to wash your hands clean!"
 
     about:
       about_title: "About Us"
@@ -74,7 +119,7 @@ en:
       contact_cardtitle1: "Frequently Asked Questions (FAQ)"
       contact_cardtitle2: "Customer Support"
       contact_question1: "Where can I contact Customer Support?"
-      contact_answer1: "You can fill out our Customer Form using this link:"
+      contact_answer1: "You can contact us by filling out our Customer Form using the link below:"
       contact_question2: "Where is my purchase order receipt/email?"
       contact_answer2: "We don't show any order confirmation!"
       contact_question3: "When will my parcel arrive?"
