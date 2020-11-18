@@ -2,7 +2,7 @@
 <hr>
 
 <div class="center-content">
-  <%# Note: "model: user.new" is equivalent to "scope: :user, url: users_path" %>
+  <%# Note: "model: User.new" is equivalent to "scope: :user, url: users_path" %>
   <%= form_with model: User.new, method: 'post', local: true do |form| %>
   <p>
     <%= form.label :email, t(".email") %><br>
@@ -11,7 +11,7 @@
 
   <p>
     <%= form.label :password, t(".password") %><br>
-    <%= form.password_field :password, title: t(".enter_password"), size: 30, placeholder: t(".password_placeholder"), :required => true %>
+    <%= form.password_field :password, title: t(".enter_password"), placeholder: t(".password_placeholder"), size: 30, :required => true %>
   </p>
   <p>
     <%= form.submit t(".login_button") %>

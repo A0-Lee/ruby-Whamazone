@@ -71,6 +71,7 @@ en:
       signup_button: "Sign-up!"
       signup_successful: "You've Signed up successfully!"
       signup_fail: "Sign-up failed!"
+      signup_passwords_do_not_match: "Both password fields do not match!"
 
 
   contacts:

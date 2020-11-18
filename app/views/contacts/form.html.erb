@@ -7,12 +7,12 @@
 <%= form_with scope: :form, url: request_form_url, method: 'post', local: true do |form| %>
 <p>
   <%= form.label :name, t(".name") %><br>
-  <%= form.text_field :name, title: t(".enter_name"), size: 30, placeholder: t(".name_placeholder"), :required => true %>
+  <%= form.text_field :name, title: t(".enter_name"), placeholder: t(".name_placeholder"), size: 30, :required => true %>
 </p>
 
 <p>
   <%= form.label :email, t(".email") %><br>
-  <%= form.email_field :email, title: t(".enter_email"), size: 30, placeholder: t(".email_placeholder"), :required => true %>
+  <%= form.email_field :email, title: t(".enter_email"), placeholder: t(".email_placeholder"), size: 30, :required => true %>
 </p>
 
 <p>
@@ -22,7 +22,7 @@
 
 <p>
   <%= form.label :message, t(".message") %><br>
-  <%= form.text_area :message, title: t(".enter_message"), size: "50x5", placeholder: t(".message_placeholder"), :required => true %>
+  <%= form.text_area :message, title: t(".enter_message"), placeholder: t(".message_placeholder"), size: "50x5", :required => true %>
 </p>
 
 <p>

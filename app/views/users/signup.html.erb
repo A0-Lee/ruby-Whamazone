@@ -1,3 +1,4 @@
+<%= render 'shared/flashmessage' %>
 <h1><%=t('.signup_title')%></h1>
 <hr>
 <p><%=t('.signup_description')%></p>
@@ -11,12 +12,12 @@
 <%= form_with model: User.new, local: true do |form| %>
 <p>
   <%= form.label :username, t(".username") %><br>
-  <%= form.text_field :username, title: t(".enter_username"), size: 30, placeholder: t(".username_placeholder"), :required => true %>
+  <%= form.text_field :username, title: t(".enter_username"), placeholder: t(".username_placeholder"), size: 30, :required => true %>
 </p>
 
 <p>
   <%= form.label :name, t(".name") %><br>
-  <%= form.text_field :name, title: t(".enter_name"), size: 30, placeholder: t(".name_placeholder"), :required => true %>
+  <%= form.text_field :name, title: t(".enter_name"), placeholder: t(".name_placeholder"), size: 30, :required => true %>
 </p>
 
 <p>
@@ -26,12 +27,12 @@
 
 <p>
   <%= form.label :password, t(".password") %><br>
-  <%= form.password_field :password, title: t(".enter_password"), size: 30, placeholder: t(".password_placeholder"), :required => true %>
+  <%= form.password_field :password, title: t(".enter_password"), placeholder: t(".password_placeholder"), size: 30, :required => true %>
 </p>
 
 <p>
   <%= form.label :confirm_password, t(".confirm_password") %><br>
-  <%= form.password_field :password, title: t(".enter_confirm_password"), size: 30, placeholder: t(".confirm_password_placeholder"), :required => true %>
+  <%= form.password_field :confirm_password, title: t(".enter_confirm_password"), placeholder: t(".confirm_password_placeholder"), size: 30, :required => true %>
 </p>
 
 <p>
