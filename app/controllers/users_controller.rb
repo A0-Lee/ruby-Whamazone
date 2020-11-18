@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  def login
+  def signup
   end
-
   # This method is used for the signup page
   def create
     if (is_password_valid())
+      # Save user to the database with form parameters as values to respective columns
       @user = User.new(user_params)
       if @user.save
         flash[:notice] = I18n.t('users.signup.signup_successful')

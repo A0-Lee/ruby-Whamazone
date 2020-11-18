@@ -1,5 +1,4 @@
-// There is a bug with turbolinks-preview where if the hidden message was activated beforehand
-// the hidden message will still be cached before displaying the original message after a page reload
+// You've found the hidden easter egg!
 document.addEventListener("turbolinks:load", function() {
   $(document).ready(function() {
     $("#author").click(function() {

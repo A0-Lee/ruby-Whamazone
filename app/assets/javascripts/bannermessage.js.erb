@@ -1,7 +1,9 @@
 // For the shared/banner message partial view
 
+// NOTE: There is a bug with turbolinks-preview where if the message was cached beforehand
+// the old message will still be displayed (for a split second) before displaying the next message after a page reload
 function randomMessage() {
-  // Generates a random number between 0 (inclusive) and 3 (exclusive)
+  // Generates a random number between 0 (inclusive) and 8 (exclusive)
   var randomIndex = Math.floor((Math.random() * 8) + 0);
   var messages = ["<%= I18n.t 'main.home.home_event1' %>", "<%= I18n.t 'main.home.home_event2' %>",
    "<%= I18n.t 'main.home.home_event3' %>", "<%= I18n.t 'main.home.home_event4' %>", "<%= I18n.t 'main.home.home_event5' %>",

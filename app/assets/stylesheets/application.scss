@@ -12,8 +12,9 @@
  *
  */
 @import "bootstrap";
-$brand-color: #FFCC5C; // Adds padding on view to ease user readability
+$brand-color: #FFCC5C;
 
+// Adds padding on view to ease user readability
 .margin-padding {
   padding: 1rem 2rem 2rem;
 }
@@ -28,8 +29,8 @@ $brand-color: #FFCC5C; // Adds padding on view to ease user readability
 .alert {
   padding: 0.5rem;
 }
-// Override text-decoration: none; by using !important statement - otherwise no color would show
 
+// Override text-decoration: none; by using !important statement - otherwise no color would show
 .navbar-brand {
   color: $brand-color !important;
   font-size: 1.5rem;

@@ -32,7 +32,8 @@
 # Any titles/heading of english text presented on the view is written and referred here!
 # This makes it more modular and clear!
 en:
-  users:
+
+  sessions:
     login:
       login_title: "Login with your Whamazone Account"
       login_description: "Login as a Whamazone customer."
@@ -45,8 +46,12 @@ en:
       password_placeholder: "Enter your password"
       login_button: "Login"
       login_successful: "You have successfully logged in!"
+      logout_successful: "You have successfully logged out."
+      login_fail: "Entered Email or Password is incorrect!"
+      login_prevent_title: "Don't be sneaky ;)"
+      login_prevent_desc: "You're already logged into your account!"
 
-
+  users:
     signup:
       signup_title: "Sign-up today as a Whamazone customer!"
       signup_description: "We offer several benefits towards being an existing customer:"
