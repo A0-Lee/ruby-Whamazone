@@ -62,15 +62,16 @@ en:
       email: "Email:"
       enter_email: "Enter your email"
       email_placeholder: "You will be using this to login."
+      email_info: "The Email Address does not have to be real, it only has to adhere to the Email REGEX (built-in using form_with)"
       password: "Password:"
       enter_password: "Enter your password"
       password_placeholder: "Remember this!"
-      confirm_password: "Confrim Password:"
+      confirm_password: "Confirm Password:"
       enter_confirm_password: "Confirm your password"
       confirm_password_placeholder: "Enter the same password."
       signup_button: "Sign-up!"
       signup_successful: "You've Signed up successfully!"
-      signup_fail: "Sign-up failed!"
+      signup_fail: "Username or Email already exists!"
       signup_passwords_do_not_match: "Both password fields do not match!"
 
 

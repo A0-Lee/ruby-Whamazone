@@ -12,7 +12,7 @@
 <%= form_with model: User.new, local: true do |form| %>
 <p>
   <%= form.label :username, t(".username") %><br>
-  <%= form.text_field :username, title: t(".enter_username"), placeholder: t(".username_placeholder"), size: 30, :required => true %>
+  <%= form.text_field :username, title: t(".enter_username"), placeholder: t(".username_placeholder"), size: 30, :uniqueness => true, :required => true %>
 </p>
 
 <p>
@@ -22,7 +22,7 @@
 
 <p>
   <%= form.label :email, t(".email") %><br>
-  <%= form.email_field :email, title: t(".enter_email"), placeholder: t(".email_placeholder"), size: 30, :required => true %>
+  <%= form.email_field :email, title: t(".enter_email"), placeholder: t(".email_placeholder"), size: 30, :uniqueness => true, :required => true %>
 </p>
 
 <p>
@@ -34,6 +34,10 @@
   <%= form.label :confirm_password, t(".confirm_password") %><br>
   <%= form.password_field :confirm_password, title: t(".enter_confirm_password"), placeholder: t(".confirm_password_placeholder"), size: 30, :required => true %>
 </p>
+
+<p>
+  <b>NOTE:</b> <%= t(".email_info") %>
+  </p>
 
 <p>
   <%= form.submit t(".signup_button") %>
