@@ -52,6 +52,10 @@ en:
       login_prevent_desc: "You're already logged into your account!"
 
   users:
+    account:
+      account_title: "My Whamazone Account"
+      account_desc: "Your account details:"
+      
     signup:
       signup_title: "Sign-up today as a Whamazone customer!"
       signup_description: "We offer several benefits towards being an existing customer:"

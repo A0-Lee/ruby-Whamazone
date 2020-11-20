@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'sessions/login'
   # Establish route URL to these controller/view
   get 'main/home'
   get 'main/about'
@@ -8,6 +7,7 @@ Rails.application.routes.draw do
  # Standardise the related routes below
   get 'user/signup', to: 'users#signup'
   get 'user/login', to: 'sessions#login'
+  get 'user/account', to: 'users#account'
   get 'user/logout', to: 'sessions#destroy'
 
   # Contact form that uses mailer to send email (if it was linked to SMTP server)

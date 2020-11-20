@@ -9,10 +9,11 @@
 </ul>
 <hr>
 
-<%= form_with model: User.new, local: true do |form| %>
+<%# Note: "model: User.new" is equivalent to "scope: :user, url: users_path" %>
+<%= form_with model: User.new, post: 'post', local: true do |form| %>
 <p>
   <%= form.label :username, t(".username") %><br>
-  <%= form.text_field :username, title: t(".enter_username"), placeholder: t(".username_placeholder"), size: 30, :uniqueness => true, :required => true %>
+  <%= form.text_field :username, title: t(".enter_username"), placeholder: t(".username_placeholder"), size: 30, :required => true %>
 </p>
 
 <p>
@@ -22,7 +23,7 @@
 
 <p>
   <%= form.label :email, t(".email") %><br>
-  <%= form.email_field :email, title: t(".enter_email"), placeholder: t(".email_placeholder"), size: 30, :uniqueness => true, :required => true %>
+  <%= form.email_field :email, title: t(".enter_email"), placeholder: t(".email_placeholder"), size: 30, :required => true %>
 </p>
 
 <p>
@@ -31,8 +32,8 @@
 </p>
 
 <p>
-  <%= form.label :confirm_password, t(".confirm_password") %><br>
-  <%= form.password_field :confirm_password, title: t(".enter_confirm_password"), placeholder: t(".confirm_password_placeholder"), size: 30, :required => true %>
+  <%= form.label :password_confirmation, t(".confirm_password") %><br>
+  <%= form.password_field :password_confirmation, title: t(".enter_confirm_password"), placeholder: t(".confirm_password_placeholder"), size: 30, :required => true %>
 </p>
 
 <p>

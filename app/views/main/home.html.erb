@@ -4,12 +4,3 @@
 <h1><%=t('.home_title')%></h1>
 <hr>
 <p><%=t('.home_description')%></p>
-
-<%# Temporary testing of user details %>
-  <% if session_user %>
-    <p>Email: <%= session_user.email %></p>
-    <p>Username: <%= session_user.username %></p>
-    <p>Password: <%= session_user.password_digest %></p>
-    <p>Created at: <%= session_user.created_at %></p>
-    <p>Updated at: <%= session_user.updated_at %></p>
-  <% end %>

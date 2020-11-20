@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-  helper_method :session_user
+  # Define global methods that can be used in other controllers/views
+  helper_method :session_user, :user_logged_in
 
   # Keeps track of the logged user's details in a session
   def session_user
@@ -13,4 +14,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def user_logged_in
+    # A boolean version of session_user method -> if value is returned = true, if nil is returned = false
+    !!session_user
+  end
 end

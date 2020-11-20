@@ -17,7 +17,10 @@ Inserted into the application.html.erb file %>
         <li class="nav-item">
           <a class="nav-link" href="<%= main_about_path %>">About</a>
         </li>
-        <% if session_user %>
+        <% if user_logged_in %>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= user_account_path %>">Account</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="<%= user_logout_path %>">Logout</a>
         </li>

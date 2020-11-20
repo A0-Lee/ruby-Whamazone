@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  # Encrypt password using hash algorithm
+  # Hash and salt passwords using bcrypt hash algorithm methods
   has_secure_password
-  validates_uniqueness_of :username, :email
+  #validates_uniqueness_of :username, :email
+  validates :username, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
 end

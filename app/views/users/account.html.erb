@@ -1,0 +1,19 @@
+<%# Only logged in users should be able to use this route %>
+<%# If logged out users try to access this page, they will be redirected to root_path (defined in users_controller) %>
+  <% if user_logged_in %>
+    <h1><%=t('.account_title')%></h1>
+    <hr>
+    <p><b><i><%=t('.account_desc')%></i></b></p>
+    <% if user_logged_in %>
+      <p>Email:
+        <%= session_user.email %></p>
+      <p>Username:
+        <%= session_user.username %></p>
+      <p>Password:
+        <%= session_user.password_digest %></p>
+      <p>Created at:
+        <%= session_user.created_at %></p>
+      <p>Updated at:
+        <%= session_user.updated_at %></p>
+    <% end %>
+  <% end %>
