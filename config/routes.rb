@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'user/login', to: 'sessions#login'
   get 'user/account', to: 'users#account'
   get 'user/logout', to: 'sessions#destroy'
+  get 'user/edit', to: 'users#edit'
 
   # Contact form that uses mailer to send email (if it was linked to SMTP server)
   get 'contacts/form'

@@ -10,34 +10,34 @@
 <hr>
 
 <%# Note: "model: User.new" is equivalent to "scope: :user, url: users_path" %>
-<%= form_with model: User.new, post: 'post', local: true do |form| %>
+<%= form_with model: User.new, local: true do |form| %>
 <p>
-  <%= form.label :username, t(".username") %><br>
-  <%= form.text_field :username, title: t(".enter_username"), placeholder: t(".username_placeholder"), size: 30, :required => true %>
+  <%= form.label :username, t(".signup_username") %><br>
+  <%= form.text_field :username, title: t(".signup_enter_username"), placeholder: t(".signup_username_placeholder"), size: 30, :required => true %>
 </p>
 
 <p>
-  <%= form.label :name, t(".name") %><br>
-  <%= form.text_field :name, title: t(".enter_name"), placeholder: t(".name_placeholder"), size: 30, :required => true %>
+  <%= form.label :name, t(".signup_name") %><br>
+  <%= form.text_field :name, title: t(".signup_enter_name"), placeholder: t(".signup_name_placeholder"), size: 30, :required => true %>
 </p>
 
 <p>
-  <%= form.label :email, t(".email") %><br>
-  <%= form.email_field :email, title: t(".enter_email"), placeholder: t(".email_placeholder"), size: 30, :required => true %>
+  <%= form.label :email, t(".signup_email") %><br>
+  <%= form.email_field :email, title: t(".signup_enter_email"), placeholder: t(".signup_email_placeholder"), size: 30, :required => true %>
 </p>
 
 <p>
-  <%= form.label :password, t(".password") %><br>
-  <%= form.password_field :password, title: t(".enter_password"), placeholder: t(".password_placeholder"), size: 30, :required => true %>
+  <%= form.label :password, t(".signup_password") %><br>
+  <%= form.password_field :password, title: t(".signup_enter_password"), placeholder: t(".signup_password_placeholder"), size: 30, :required => true %>
 </p>
 
 <p>
-  <%= form.label :password_confirmation, t(".confirm_password") %><br>
-  <%= form.password_field :password_confirmation, title: t(".enter_confirm_password"), placeholder: t(".confirm_password_placeholder"), size: 30, :required => true %>
+  <%= form.label :password_confirmation, t(".signup_confirm_password") %><br>
+  <%= form.password_field :password_confirmation, title: t(".signup_enter_confirm_password"), placeholder: t(".signup_confirm_password_placeholder"), size: 30, :required => true %>
 </p>
 
 <p>
-  <b>NOTE:</b> <%= t(".email_info") %>
+  <b>NOTE:</b> <%= t(".signup_email_note") %>
   </p>
 
 <p>

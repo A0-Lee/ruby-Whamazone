@@ -16,6 +16,26 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_select 'form input', 7
   end
 
+  test "should get account edit" do
+    # Sign up as a new user
+    post users_path, params: {user: {username: 'actualJohnSmith', name: 'John Smith', email: 'realJohnSmith@mail.com', password: 'password', password_confirmation: 'password'}}
+
+    # User should be automatically logged in upon valid sign-up
+    get user_edit_url
+    assert_response :success
+
+    assert_template layout: 'application'
+    assert_select 'h1', 'Edit your Whamazone Account'
+    assert_select 'form', true
+    assert_select 'form input', 7
+  end
+
+  test "should not get account edit" do
+    # user should be redirected to root_path if not logged in
+    get user_edit_url
+    assert_redirected_to root_path
+  end
+
   test "should get account" do
     # Sign up as a new user
     post users_path, params: {user: {username: 'actualJohnSmith', name: 'John Smith', email: 'realJohnSmith@mail.com', password: 'password', password_confirmation: 'password'}}

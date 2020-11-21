@@ -13,18 +13,18 @@
     <div class="center-content">
         <%= form_with scope: :login, url: sessions_path, local: true do |form| %>
         <p>
-          <%= form.label :email, t(".email") %><br>
-          <%= form.email_field :email, title: t(".enter_email"), placeholder: t(".email_placeholder"), size: 30, :required => true %>
+          <%= form.label :email, t(".login_email") %><br>
+          <%= form.email_field :email, title: t(".login_enter_email"), placeholder: t(".login_email_placeholder"), size: 30, :required => true %>
         </p>
         <p>
-          <%= form.label :password, t(".password") %><br>
-          <%= form.password_field :password, title: t(".enter_password"), placeholder: t(".password_placeholder"), size: 30, :required => true %>
+          <%= form.label :password, t(".login_password") %><br>
+          <%= form.password_field :password, title: t(".login_enter_password"), placeholder: t(".login_password_placeholder"), size: 30, :required => true %>
         </p>
         <p>
           <%= form.submit t(".login_button") %>
         </p>
         <p><%=t('.login_direct_to_signup')%>
-          <a href="<%= user_signup_path %>">Sign-up here!</a>
+          <a href="<%= user_signup_path %>"><%=t('.login_link_signup')%></a>
         </p>
       <% end %>
     </div>

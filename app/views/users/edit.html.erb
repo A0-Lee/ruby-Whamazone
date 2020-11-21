@@ -1,0 +1,31 @@
+<%= render 'shared/flashmessage' %>
+<h1><%=t('.edit_title')%></h1>
+<hr>
+<%# Note: "model: User.new" is equivalent to "scope: :user, url: users_path" %>
+<%= form_for @user, local: true do |form| %>
+<p>
+  <%= form.label :username, t(".edit_username") %><br>
+  <%= form.text_field :username, title: t(".edit_enter_username"), placeholder: t(".edit_username_placeholder"), size: 30 %>
+</p>
+
+<p>
+  <%= form.label :name, t(".edit_name") %><br>
+  <%= form.text_field :name, title: t(".edit_enter_name"), placeholder: t(".edit_name_placeholder"), size: 30 %>
+</p>
+
+<p>
+  <%= form.label :email, t(".edit_email") %><br>
+  <%= form.email_field :email, title: t(".edit_enter_email"), placeholder: t(".edit_email_placeholder"), size: 30 %>
+</p>
+
+<p>
+  <%= form.label :password, t(".edit_password") %><br>
+  <%= form.password_field :password, title: t(".edit_enter_password"), placeholder: t(".edit_password_placeholder"), size: 30 %>
+</p>
+
+<p><b>NOTE:</b> <%= t(".edit_note") %></p>
+
+<p>
+  <%= form.submit t(".edit_button")%>
+</p>
+<% end %>

@@ -1,19 +1,24 @@
 <%# Only logged in users should be able to use this route %>
-<%# If logged out users try to access this page, they will be redirected to root_path (defined in users_controller) %>
-  <% if user_logged_in %>
-    <h1><%=t('.account_title')%></h1>
-    <hr>
-    <p><b><i><%=t('.account_desc')%></i></b></p>
+  <%# If logged out users try to access this page, they will be redirected to root_path (defined in users_controller) %>
     <% if user_logged_in %>
-      <p>Email:
-        <%= session_user.email %></p>
-      <p>Username:
+      <h1><%=t('.account_title')%></h1>
+      <hr>
+      <p>
+        <b>
+          <i><%=t('.account_desc')%></i>
+        </b>
+      </p>
+      <p><%=t('.account_username')%>
         <%= session_user.username %></p>
-      <p>Password:
+      <p><%=t('.account_name')%>
+        <%= session_user.name %></p>
+      <p><%=t('.account_email')%>
+        <%= session_user.email %></p>
+      <p><%=t('.account_password')%>
         <%= session_user.password_digest %></p>
-      <p>Created at:
+      <p><%=t('.account_created_at')%>
         <%= session_user.created_at %></p>
-      <p>Updated at:
+      <p><%=t('.account_updated_at')%>
         <%= session_user.updated_at %></p>
+      <a href="<%= user_edit_path %>" class="btn btn-primary"><%=t('.account_edit_button')%></a>
     <% end %>
-  <% end %>
