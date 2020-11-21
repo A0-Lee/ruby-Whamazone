@@ -8,7 +8,7 @@ class UserTest < ActiveSupport::TestCase
   def setup
     # New method only creates a new user object (not yet saved to database)
     @newUser = User.new(username: 'new user', name: 'Mr Test', email: 'newtest@mail.com', password: 'password')
-    # Create method creates a user object and saves it to the database (if validations pass)
+    # Create method creates a user object and saves it to the database (if attribute validations pass)
     @createUser = User.create(username: 'create user', name: 'Mr Test', email: 'createtest@mail.com', password: 'password')
     # Invalid user objects (username and email attributes are unique)
     @duplicateUsername = User.create(username: 'create user', name: 'Mr Test', email: 'duplicatetest@mail.com', password: 'password')

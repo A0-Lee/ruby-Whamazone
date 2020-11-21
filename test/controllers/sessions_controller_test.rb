@@ -26,4 +26,14 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to user_login_path
     assert_not_empty flash[:alert]
   end
+
+  test "user should logout" do
+    # Create a new user using sign-up form
+    post users_path, params: {user: {username: 'test', name: 'Mr Test', email: 'test@mail.com', password: 'password', password_confirmation: 'password'}}
+    # Logout user
+    get user_logout_path
+
+    assert_redirected_to root_path
+    assert_not_empty flash[:notice]
+  end
 end

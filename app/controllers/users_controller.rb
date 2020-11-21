@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # This method is used for the signup page
+  # This method is used for the signup form
   def create
     if (is_password_field_valid())
       # Creates a user object using the sent form parameters
@@ -41,15 +41,15 @@ class UsersController < ApplicationController
     end
   end
 
-  # This method is used for the edit page
+  # This method is used for the edit form
   def update
-    # Check if user is valid first
+    # Check if user in session is valid first
     @user = User.find(session[:user_id])
-    # Check if username already exists in the database
-    @checkUsername = User.where(username: params[:user][:username]).exists?
-    # And check if email already exists in the database too
-    @checkEmail = User.where(email: params[:user][:email]).exists?
-    if @user.valid? && !@checkUsername && !@checkEmail
+    # Check if desired username already exists in the database - except their own username
+    @checkUsername = User.where.not(username: params[:user][:username]).exists?
+    # And check if desired email already exists in the database too - except their own email
+    @checkEmail = User.where.not(email: params[:user][:email]).exists?
+    if @user.valid? && @checkUsername && @checkEmail
       @user.update(user_params)
       flash[:notice] = I18n.t('users.edit.edit_success')
       redirect_to root_path

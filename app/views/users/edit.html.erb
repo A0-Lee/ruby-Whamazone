@@ -1,8 +1,9 @@
 <%= render 'shared/flashmessage' %>
 <h1><%=t('.edit_title')%></h1>
 <hr>
-<%# Note: "model: User.new" is equivalent to "scope: :user, url: users_path" %>
-<%= form_for @user, local: true do |form| %>
+<%# Note: "model: @user" is equivalent to "scope: :user, url: users_path(@user), method: :patch" %>
+<%# Where @user is the current session user defined in the edit view in users_controller %>
+<%= form_with model: @user, local: true do |form| %>
 <p>
   <%= form.label :username, t(".edit_username") %><br>
   <%= form.text_field :username, title: t(".edit_enter_username"), placeholder: t(".edit_username_placeholder"), size: 30 %>
