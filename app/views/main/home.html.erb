@@ -1,6 +1,14 @@
 <%= render 'shared/banner' %>
 <%= render 'shared/flashmessage' %>
-<hr>
-<h1><%=t('.home_title')%></h1>
+<br>
+<% if user_logged_in %>
+  <h1><%=t('.home_greet_user')%>
+    <%=session_user.name%>!
+    <%=t('.home_title_user')%></h1>
+<% else %>
+  <h1><%=t('.home_title')%></h1>
+<% end %>
 <hr>
 <p><%=t('.home_description')%></p>
+<br>
+<%= render 'products/index' %>

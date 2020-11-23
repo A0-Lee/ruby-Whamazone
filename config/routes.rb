@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   # Get all the appropriate CRUD paths for our resources
   resources :users
   resources :sessions
+  resources :products
 
   # This is the first page the user will first load into as it is the root page
   root 'main#home'

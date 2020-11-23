@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Whamazone Backpack
+  description: Our official backpack!
+  category: Essentials
+  image_url: backpack.jpeg
+  price: 9.99
+  quantityInStock: 1
+
+two:
+  name: MyString
+  description: MyText
+  category: MyString
+  image_url: backpack.jpeg
+  price: 9.99
+  quantityInStock: 1

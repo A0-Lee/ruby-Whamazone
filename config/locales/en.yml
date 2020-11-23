@@ -32,6 +32,37 @@
 # Any titles/heading of english text presented on the view is written and referred here!
 # This makes it more modular and clear!
 en:
+  shared:
+    header:
+      header_company: "Whamazone"
+      header_home: "Home"
+      header_contact: "Contact"
+      header_about: "About"
+      header_products: "Products"
+      header_account: "Account"
+      header_login: "Login"
+      header_logout: "Logout"
+      header_search_button: "Search"
+
+    banner:
+      banner_message_of_the_day: "Message of the Day:"
+
+    badgechoice:
+      badge_title: "This product is so good, you should just buy it!"
+      badge_company: "Whamazone's "
+      badge_name: "Just-buy-it"
+
+
+  products:
+    index:
+      index_title: "Whamazone Products"
+      index_shared_title: "Our Selection of Products"
+      index_category_label: "Category: "
+      index_price_sign: "£"
+      index_buy_button: "Buy"
+      index_new_badge: "New"
+      index_rating_title: "Average rating of this product is 2.5 out of 5."
+
 
   sessions:
     login:
@@ -51,6 +82,7 @@ en:
       login_prevent_title: "Don't be sneaky ;)"
       login_prevent_desc: "You're already logged into your account!"
       login_link_signup: "Sign-up here!"
+
 
   users:
     edit:
@@ -133,10 +165,13 @@ en:
       form_enter_message: "Enter your message here"
       form_submit: "Submit"
 
+
   main:
     home:
       home_title: "Welcome to Whamazone!"
       home_description: "The best (and even better) e-commerce business since 2020!"
+      home_title_user: "Welcome back to Whamazone!"
+      home_greet_user: "Hello,"
       home_event1: "Got Lockdown'd? We have toilet paper in stock!"
       home_event2: "Have goods to sell? List them as a third-party seller!"
       home_event3: "Is the Pandemic bringing you down? Our prices feel the same!"

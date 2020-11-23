@@ -13,6 +13,30 @@
  */
 @import "bootstrap";
 $brand-color: #FFCC5C;
+$white-color: #FFFFFF;
+
+.white-color {
+  color: $white-color;
+}
+
+.brand-color {
+  color: $brand-color;
+}
+
+.img-icon {
+  height: 40px;
+  width: 40px;
+}
+
+.img-large {
+  height: 200px;
+  width: 200px;
+}
+
+.product-display {
+  border-style: solid;
+  border-width: thin;
+}
 
 // Adds padding on view to ease user readability
 .margin-padding {
@@ -57,4 +81,29 @@ $brand-color: #FFCC5C;
 #wrapper {
   min-height: 900px;
   position: relative;
+}
+
+// AUTHOR NOTE: Big appreciation to FredGenkin for providing the open-source bootstrap review rating stars
+// https://codepen.io/FredGenkin/pen/eaXYGV
+:root {
+  --star-size: 40px;
+  --star-color: #FFCC5C;
+  --star-background: #808080;
+}
+
+.rating-review-stars {
+  --percent: calc(var(--rating) / 5 * 100%);
+
+  display: inline-block;
+  font-size: var(--star-size);
+  font-family: Times;
+  line-height: 1;
+
+  &::before {
+    content: '★★★★★';
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, var(--star-color) var(--percent), var(--star-background) var(--percent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }

@@ -12,8 +12,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_select 'p', 'We offer several benefits towards being an existing customer:'
     # Check if form exists
     assert_select 'form', true
-    # Note that the submit button and the hidden utf8 name counts as input fields
-    assert_select 'form input', 7
+    # Note that the submit button and the hidden utf8 name counts as input fields, as well as the search bar in header
+    assert_select 'form input', 8
   end
 
   test "should edit account details" do
@@ -36,9 +36,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_path
     # Create another user account
     post users_path, params: {user: {username: 'test', name: 'tester', email: 'tester@mail.com', password: 'password', password_confirmation: 'password'}}
-    @user = User.find(session[:user_id])
+    get user_edit_path
     # Try to edit details with existing username
-    post users_path(@user), params: {user: {username: 'exists', name: 'tester', email: 'tester@mail.com', password: 'password', password_confirmation: 'password'}}
+    post users_path(@user), params: {user: {username: 'different', name: 'tester', email: 'tester@mail.com', password: 'password', password_confirmation: 'password'}}
     assert_redirected_to user_signup_path
     assert_not_empty flash[:alert]
     # Check if the failed user edit parameters doesn't exist in the datbase
@@ -57,7 +57,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_template layout: 'application'
     assert_select 'h1', 'Edit your Whamazone Account'
     assert_select 'form', true
-    assert_select 'form input', 7
+    assert_select 'form input', 8
   end
 
   test "should not get account edit" do

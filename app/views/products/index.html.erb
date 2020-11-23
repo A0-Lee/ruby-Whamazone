@@ -1,0 +1,23 @@
+<br>
+<h1><%=t('.index_title')%></h1>
+<hr>
+<br>
+<div class="container">
+  <% @products.each do |product| %>
+    <div class="row">
+      <div class="col-sm-4" align="center">
+        <%= render 'shared/badgechoice' %>
+        <a href="<%= products_path %>/<%= product.id %>"><img src="<%= asset_path(product.image_url)%>" alt="<%= product.name %>" class="img-large"></a>
+      </div>
+      <div class="col-sm-8">
+        <h2><%= link_to product.name, product %> <span class="badge badge-danger"><%=t('.index_new_badge')%></span></h2>
+        <div class="rating-review-stars" style="--rating: 2.5;" title="<%=t('.index_rating_title')%>"></div>
+        <p><%=t('.index_category_label')%><i><%= product.category %></i></p>
+        <h4><%=t('.index_price_sign')%><%= product.price %></h4>
+        <a href="<%= products_path %>/<%= product.id %>" class="btn btn-primary"><%=t('.index_buy_button')%></a>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+  <br>
+</div>

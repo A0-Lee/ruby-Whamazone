@@ -1,7 +1,7 @@
 <%= render 'shared/flashmessage' %>
 
 <%# If user is already logged in, ensure they do not have access to the login page until they logout %>
-  <% if session_user %>
+  <% if user_logged_in %>
     <h1><%=t('.login_prevent_title')%></h1>
     <hr>
     <div class="center-content">

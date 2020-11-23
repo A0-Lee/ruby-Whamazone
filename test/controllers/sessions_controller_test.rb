@@ -8,7 +8,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_template layout: 'application'
     assert_select 'h1', 'Login with your Whamazone Account'
     assert_select 'form', true
-    assert_select 'form input', 4
+    assert_select 'form input', 5
   end
 
   test "user should login" do
