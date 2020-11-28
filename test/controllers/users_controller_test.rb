@@ -38,7 +38,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     post users_path, params: {user: {username: 'test', name: 'tester', email: 'tester@mail.com', password: 'password', password_confirmation: 'password'}}
     get user_edit_path
     # Try to edit details with existing username
-    post users_path(@user), params: {user: {username: 'different', name: 'tester', email: 'tester@mail.com', password: 'password', password_confirmation: 'password'}}
+    post users_path(@user), params: {user: {username: 'exists', name: 'tester', email: 'tester@mail.com', password: 'password', password_confirmation: 'password'}}
     assert_redirected_to user_signup_path
     assert_not_empty flash[:alert]
     # Check if the failed user edit parameters doesn't exist in the datbase

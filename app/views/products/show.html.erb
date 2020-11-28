@@ -1,34 +1,42 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @product.category %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @product.image_url %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<p>
-  <strong>In stock:</strong>
-  <%= @product.quantityInStock %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', root_path %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6" align="center">
+      <img src="<%= asset_path(@product.image_url)%>" alt="<%= @product.name %>" class="img-display">
+    </div>
+    <div class="col-sm-5">
+      <br>
+      <h1><%= @product.name %>
+        <% if @product.is_new %>
+          <%= render 'shared/badgenew' %>
+        <% end %>
+      </h1>
+      <%= render 'shared/reviewstars' %>
+      <br>
+      <% if @product.has_badge %>
+        <%= render 'shared/badgechoice' %>
+      <% end %>
+      <hr>
+      <h3><%=t('.show_price')%>
+        <%=t('.show_currency')%><%= @product.price %></h3>
+      <br>
+      <h4><%=t('.show_quantityinstock')%>
+        <%= @product.quantityInStock %></h4>
+      <hr>
+      <p>
+        <b><%=t('.show_description')%></b>
+      </p>
+      <hr>
+      <p><%= @product.description %></p>
+      <p>
+        <b><%=t('.show_category')%></b>
+        <%= @product.category %></p>
+      <hr>
+      <a href="<%= @product.id %>" class="btn btn-primary"><%=t('.show_add_to_basket')%></a>
+      <br>
+      <br>
+      <%= link_to 'Edit', edit_product_path(@product) %>
+      |
+      <%= link_to 'Back', root_path %>
+    </div>
+  </div>
+</div>

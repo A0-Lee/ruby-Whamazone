@@ -14,7 +14,9 @@ Product.create([{
   category: 'Toiletries',
   image_url: 'toiletroll.jpeg',
   price: '9.99',
-  quantityInStock: '10'
+  quantityInStock: '10',
+  has_badge: true,
+  is_new: false
 },
 {
   name: 'HX-12 Pro Laptop',
@@ -22,7 +24,9 @@ Product.create([{
   category: 'Technology',
   image_url: 'hx12laptop.jpeg',
   price: '699.99',
-  quantityInStock: '2'
+  quantityInStock: '2',
+  has_badge: false,
+  is_new: true
 },
 {
   name: 'Big Water Bottle',
@@ -30,7 +34,9 @@ Product.create([{
   category: 'Food & Drinks',
   image_url: 'bigwaterbottle.jpeg',
   price: '1.99',
-  quantityInStock: '50'
+  quantityInStock: '50',
+  has_badge: false,
+  is_new: false
 },
 {
   name: 'Super Battery Power Bank',
@@ -38,7 +44,9 @@ Product.create([{
   category: 'Technology',
   image_url: 'batterypowerbank.jpeg',
   price: '12.99',
-  quantityInStock: '7'
+  quantityInStock: '7',
+  has_badge: true,
+  is_new: false
 },
 {
   name: 'Kitchen Gloves (Large)',
@@ -46,7 +54,9 @@ Product.create([{
   category: 'Kitchen',
   image_url: 'kitchenglove.jpeg',
   price: '3.99',
-  quantityInStock: '36'
+  quantityInStock: '36',
+  has_badge: false,
+  is_new: false
 },
 {
   name: 'Whamazone Backpack',
@@ -54,7 +64,9 @@ Product.create([{
   category: 'Essentials',
   image_url: 'backpack.jpeg',
   price: '18.99',
-  quantityInStock: '100'
+  quantityInStock: '100',
+  has_badge: true,
+  is_new: true
 }])
 
 p "Created #{Product.count} products"

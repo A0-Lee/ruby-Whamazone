@@ -33,6 +33,12 @@
 # This makes it more modular and clear!
 en:
   shared:
+    reviewstars:
+      reviewstars_title: "Average rating of this product is 2.5 out of 5."
+
+    badgenew:
+      badge_title: "New"
+
     header:
       header_company: "Whamazone"
       header_home: "Home"
@@ -54,14 +60,21 @@ en:
 
 
   products:
+    show:
+      show_name: "Name:"
+      show_description: "About this item:"
+      show_category: "Category:"
+      show_price: "Price:"
+      show_quantityinstock: "In Stock:"
+      show_currency: "£"
+      show_add_to_basket: "Add to Basket"
+
     index:
-      index_title: "Whamazone Products"
-      index_shared_title: "Our Selection of Products"
+      index_title: "All Whamazone Products"
+      index_shared_title: "Our Featured Selection of Products"
       index_category_label: "Category: "
       index_price_sign: "£"
       index_buy_button: "Buy"
-      index_new_badge: "New"
-      index_rating_title: "Average rating of this product is 2.5 out of 5."
 
 
   sessions:
@@ -184,7 +197,34 @@ en:
     about:
       about_title: "About Us"
       about_description: "The Whamazone Wikipedia - Everything you need to know about us."
-      about_heading1: "Why the name \"Whamazone\"?"
+      about_ceo_intro: "CEO of Whamazone says:"
+      about_div1_header: "Our beliefs:"
+      about_div1_p1: "At Whamazone, we believe in providing a diverse range of products to suit every customer's needs."
+      about_div1_p2: "Part of our three-core business philosophy at Whamazone is to:"
+      about_div1_li1: "Always put the customer's money first (and then the customer)."
+      about_div1_li2: "Prioritise instant-delivery, customer satisfaction, and easy check-out!"
+      about_div1_li3: "Keep an open-mind for every critical review a customer posts, even if it is obviously wrong."
+      about_div1_ceo_quote: "\"We love our customers! We believe Whamazone wouldn't exist without our beloved community.\""
+      about_div2_header: "Our business plans:"
+      about_div2_p1: "At Whamazone, we believe in providing a diverse range of business opportunities to suit every investor's needs."
+      about_div2_p2: "Part of our three-stage business plan at Whamazone is to:"
+      about_div2_li1: "Assert global market dominance using existing network infrastructure and the power of e-commerce!"
+      about_div2_li2: "Profit off of consumerism in every market sector (Watch out for Whamazone Wetflix coming soon!)."
+      about_div2_li3: "Maximise shareholder-value and worker productivity to the bone."
+      about_div2_ceo_quote: "\"We love our shareholders! We believe Whamazone wouldn't exist without our beloved investors.\""
+      about_div3_header: "Why \"Whamazone?\""
+      about_div3_p1: "Our company name, Whamazone, can be broken down into 3 distinct parts:"
+      about_div3_company_quote: "\"Feel the WHAM, buy from Whamazone.\""
+      about_motto_intro: "Our motto:"
+      about_div3_li1: "We put the WHAM into our deliveries as well as to our competitors."
+      about_div3_li2: "Our products range from A-Z, we basically sell any products ranging from the entire English alphabet!"
+      about_div3_li3: "We have at least ONE of every product in stock! (Our entire inventory is non-existent and therefore theoretically unlimited!)"
+      about_div4_header: "On a more serious note:"
+      about_div4_p1: "Whamazone is a parody of the real-life e-commerce, Amazon, and is intended to be an educational and fun project for my coursework!"
+      about_div4_p2: "I specifically chosen an e-commerce application website because I felt like I can insert more creativity into the project due to its versatility. It also seemed like an attractive idea at the time!"
+      about_div4_p3: "Whamazone is also a fictious company and any real-life resemblance to companies with the same name is entirely coincidental at the time of making this project."
+      about_div4_p4: "If you've read this far, you should continue exploring the rest of the website more! And thank you for reading!"
+      about_div4_p5: "Also, click my name on the footer below:"
 
     contact:
       contact_title: "Contact Us"

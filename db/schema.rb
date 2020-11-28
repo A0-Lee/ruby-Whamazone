@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2020_11_21_212108) do
     t.string "image_url"
     t.decimal "price"
     t.integer "quantityInStock"
+    t.boolean "has_badge"
+    t.boolean "is_new"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
