@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Product.destroy_all
+User.destroy_all
 
 Product.create([{
   name: 'Toilet Roll',
@@ -69,4 +70,27 @@ Product.create([{
   is_new: true
 }])
 
+User.create([{
+  username: 'Guest',
+  name: 'Guest',
+  email: 'Whamazone-Guest@mail.com',
+  password: 'SecretWhamazonePassword',
+  password_confirmation: 'SecretWhamazonePassword'
+},
+{
+  username: 'brad112',
+  name: 'Brad W',
+  email: 'mynameisbrad@mail.com',
+  password: 'bradisrad',
+  password_confirmation: 'bradisrad'
+},
+{
+  username: 'KayTee',
+  name: 'Katie S',
+  email: 'KT115@mail.com',
+  password: 'mysupersecretpassword',
+  password_confirmation: 'mysupersecretpassword'
+}])
+
 p "Created #{Product.count} products"
+p "Created #{User.count} users"

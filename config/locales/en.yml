@@ -32,6 +32,10 @@
 # Any titles/heading of english text presented on the view is written and referred here!
 # This makes it more modular and clear!
 en:
+  baskets:
+    show:
+      show_currency: "£"
+
   shared:
     reviewstars:
       reviewstars_title: "Average rating of this product is 2.5 out of 5."

@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
   def destroy
     # Set the session user id to null (used to logout)
     session[:user_id] = nil
+    session[:basket_id] = nil
     flash[:notice] = I18n.t('sessions.login.logout_successful')
     redirect_to root_path
   end
