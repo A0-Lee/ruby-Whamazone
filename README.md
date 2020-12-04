@@ -38,25 +38,27 @@ Any documentation and concerns or issues related to the project are addressed he
 Database Schema and Migrations:
 -----------------------------------------
 Rails uses a Model/Migration system to handle database tables and fields using sqlite3. I will be using sqlite3 for my development and test databases.
-Note: The database development.sqlite3 is used by the rails server whereas test.sqlite3 is used by rails or rake test.
+**Note:** The database development.sqlite3 is used by the rails server *whereas* test.sqlite3 is used by rails (or rake) test.
 
 Tables:
 - Users
 - Products
 - Baskets
-- Items (Items added to the User's Basket)
+- Items (Products added to the User's Basket are called Items)
+
+To ensure that the website is populated with products and users, you can run the command "rake db:seed" in the terminal which will execute the commands in the seed.rb file.
 
 Design Choices:
 -----------------------------------------
 There may be some unconventional design decisions relating to the database schema which I will attempt to explain:
 
-- Why are the delivery details of the order assigned to the table Basket and not User or Order?
+**Why are the delivery details of the order assigned to the table Basket and not User or Order?**
 Any customer may checkout regardless if they have an account or not. In this case, it would make sense to apply the details of the customer's delivery details to their basket session as anyone checking out will always have a basket.
 
-- Then why not take these delivery details into the Order table?
+**Then why not take these delivery details into the Order table?**
 I wanted to encourage re-usability of the customer's details. In this case, if a customer has a User account, they will always use the same basket id. Knowing this, we can save the customer's delivery details to their own basket to checkout quickly next time. The same cannot be done with Order as each checkout is unique, and therefore would not save the customer's details for next time.
 
-- So why not store these delivery details in the User table?
+**So why not store these delivery details in the User table?**
 Remember that people without User accounts can checkout/buy products as customers too! This is called a checkout as a Guest system, where a customer is not required to login to a User account to checkout. So we cannot store order details into a User account (unless we created a Guest account each time). In this case, it would make perfect sense for the customer's delivery details to live and die with their basket session as it will be used at least once per checkout (the basket id session only changes when logging in or out of accounts).
 
 
