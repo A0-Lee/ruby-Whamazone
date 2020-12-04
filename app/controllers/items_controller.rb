@@ -57,10 +57,15 @@ class ItemsController < ApplicationController
 
   def remove_item
     @item = Item.find(params[:id])
-    @basket = Basket.find(session[:basket_id])
-    @item.destroy
-    flash[:alert] = "Item was successfully removed."
-    redirect_to @basket
+    if Basket.exists?(session[:basket_id]) && session[:basket_id] != nil
+      @basket = Basket.find(session[:basket_id])
+      @item.destroy
+      flash[:notice] = "Item was successfully removed."
+      redirect_to @basket
+    else
+      flash[:alert] = "Could not find Basket Session id."
+      redirect_to root_path
+    end
   end
 
 

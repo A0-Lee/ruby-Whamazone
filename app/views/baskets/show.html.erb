@@ -4,60 +4,70 @@
   <br>
   <div class="row">
     <div class="col-sm-1" align="center">
-      <span><b>Image:</b></span>
+      <span>
+        <b>Image:</b>
+      </span>
     </div>
     <div class="col-sm-4" align="center">
-      <span><b>Product Name:</b></span>
+      <span>
+        <b>Product Name:</b>
+      </span>
     </div>
     <div class="col-sm-2" align="center">
-      <span><b>Price:</b></span>
+      <span>
+        <b>Price:</b>
+      </span>
     </div>
     <div class="col-sm-2" align="center">
-      <span><b>Quantity:</b></span>
+      <span>
+        <b>Quantity:</b>
+      </span>
     </div>
   </div>
   <hr>
   <% totalPrice = 0 %>
-  <% @basket.items.each do |item| %>
-  <div class="row">
-    <div class="col-sm-1" align="center">
-      <a href="<%= products_path %>/<%= item.product.id %>"><img src="<%= asset_path(item.product.image_url)%>" alt="<%= item.product.name %>" class="img-icon"></a>
-    </div>
+    <% @basket.items.each do |item| %>
+      <div class="row">
+        <div class="col-sm-1" align="center">
+          <a href="<%= products_path %>/<%= item.product.id %>"><img src="<%= asset_path(item.product.image_url)%>" alt="<%= item.product.name %>" class="img-icon"></a>
+        </div>
 
-    <div class="col-sm-4" align="center">
-      <h4><%= link_to item.product.name, item.product, class: "vertical-align-text" %></h4>
-    </div>
+        <div class="col-sm-4" align="center">
+          <h4><%= link_to item.product.name, item.product, class: "vertical-align-text" %></h4>
+        </div>
 
-    <div class="col-sm-2" align="center">
-      <h4><span class="vertical-align-text"><%=t('.show_currency')%><%= item.product.price %></span></h4>
-    </div>
+        <div class="col-sm-2" align="center">
+          <h4>
+            <span class="vertical-align-text"><%=t('.show_currency')%><%= item.product.price %></span></h4>
+        </div>
 
-    <div class="col-sm-2" align="center">
-      <h4><span class="vertical-align-text"><%= item.quantityOrdered %></span></h4>
-    </div>
+        <div class="col-sm-2" align="center">
+          <h4>
+            <span class="vertical-align-text"><%= item.quantityOrdered %></span></h4>
+        </div>
 
-    <div class="col-sm-2 vertical-align-text" align="center">
-    <%= button_to 'Remove', remove_item_url(params: { id: item.id}), method: :delete, class: "btn btn-danger" %>
+        <div class="col-sm-2 vertical-align-text" align="center">
+          <%= button_to 'Remove', remove_item_url(params: { id: item.id}), method: :delete, class: "btn btn-danger" %>
+        </div>
+        <% totalPrice += item.product.price %>
+        </div>
+        <hr>
+      <% end %>
+      <div class="row">
+        <div class="col-sm-1" align="center">
+          <%= link_to 'Back', products_path %>
+        </div>
+        <div class="col-sm-4" align="center">
+          <h4>Total items:
+            <%= @basket.items.count %></h4>
+        </div>
+        <div class="col-sm-2" align="center">
+          <h4>Total:
+            <%=t('.show_currency')%><%= totalPrice %></h4>
+        </div>
+        <div class="col-sm-2" align="center">
+          <%= button_to 'Checkout', edit_basket_path(@basket), method: :get, class: "btn btn-primary" %>
+        </div>
+      </div>
+      <br>
     </div>
-    <% totalPrice += item.product.price %>
-  </div>
-  <hr>
-  <% end %>
-  <div class="row">
-    <div class="col-sm-1" align="center">
-    </div>
-    <div class="col-sm-4" align="center">
-      <h4>Total items: <%= @basket.items.count %></h4>
-    </div>
-    <div class="col-sm-2" align="center">
-      <h4>Total: <%=t('.show_currency')%><%= totalPrice %></h4>
-    </div>
-    <div class="col-sm-2" align="center">
-    <%= button_to 'Checkout', edit_basket_path(@basket), class: "btn btn-primary" %>
-    </div>
-
-  </div>
-</div>
-
-<%= link_to 'Edit', edit_basket_path(@basket) %> |
-<%= link_to 'Back', baskets_path %>

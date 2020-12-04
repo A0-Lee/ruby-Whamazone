@@ -40,6 +40,15 @@ Database Schema and Migrations:
 Rails uses a Model/Migration system to handle database tables and fields using sqlite3. I will be using sqlite3 for my development and test databases.
 Note: The database development.sqlite3 is used by the rails server whereas test.sqlite3 is used by rails or rake test.
 
+Tables:
+- Users
+- Products
+- Baskets
+- Items (Items added to the User's Basket)
+
+Design Choices:
+
+
 
 Testing and Development:
 -----------------------------------------

@@ -19,6 +19,12 @@ class BasketsController < ApplicationController
 
   # GET /baskets/1/edit
   def edit
+    if Basket.exists?(session[:basket_id]) && session[:basket_id] != nil
+      flash[:notice] = "Proceeding with Checkout..."
+    else
+      flash[:alert] = "Could not find Basket Session id."
+      redirect_to root_path
+    end
   end
 
   # POST /baskets
