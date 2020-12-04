@@ -11,6 +11,13 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:login][:password])
       session[:user_id] = @user.id
       flash[:notice] = I18n.t('sessions.login.login_successful')
+
+      # If the user has created a basket in a previous sesssion, use the same basket
+      if Basket.exists?(user_id: session[:user_id])
+        @basket = Basket.find_by user_id: session[:user_id]
+        session[:basket_id] = @basket.id
+      end
+
       redirect_to root_path
     else
       flash[:alert] = I18n.t('sessions.login.login_fail')
@@ -22,6 +29,7 @@ class SessionsController < ApplicationController
   def destroy
     # Set the session user id to null (used to logout)
     session[:user_id] = nil
+    # Set the session basket id to null (basket session tied to user id)
     session[:basket_id] = nil
     flash[:notice] = I18n.t('sessions.login.logout_successful')
     redirect_to root_path

@@ -4,12 +4,31 @@ class BasketsController < ApplicationController
   # GET /baskets
   # GET /baskets.json
   def index
-    @baskets = Basket.all
+    # Only an admin account can access this page
+    if session[:user_id] != 0 && session[:basket_id] = nil
+      flash[:alert] = "Please add an item to your basket first."
+      redirect_to root_path
+    else
+      @baskets = Basket.all
+    end
   end
 
   # GET /baskets/1
   # GET /baskets/1.json
   def show
+    if Basket.exists?(session[:basket_id]) && session[:basket_id] != nil
+      # We only want to check the id, so we just call the id column only
+      @sessionBasket = Basket.select(:id).find(session[:basket_id])
+      # Both values would be integers
+      if @sessionBasket.id == @basket.id
+      else
+        flash[:alert] = "Basket id does not matching with session id."
+        redirect_to root_path
+      end
+    else
+      flash[:alert] = "Could not find Basket Session id."
+      redirect_to root_path
+    end
   end
 
   # GET /baskets/new
@@ -20,7 +39,7 @@ class BasketsController < ApplicationController
   # GET /baskets/1/edit
   def edit
     if Basket.exists?(session[:basket_id]) && session[:basket_id] != nil
-      flash[:notice] = "Proceeding with Checkout..."
+      flash[:notice] = "Please enter your details to proceed with checkout."
     else
       flash[:alert] = "Could not find Basket Session id."
       redirect_to root_path
