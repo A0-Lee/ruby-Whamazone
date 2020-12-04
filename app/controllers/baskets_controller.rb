@@ -5,7 +5,7 @@ class BasketsController < ApplicationController
   # GET /baskets.json
   def index
     # Only an admin account can access this page
-    if session[:user_id] != 0 && session[:basket_id] = nil
+    if session[:user_id] != 0
       flash[:alert] = "Please add an item to your basket first."
       redirect_to root_path
     else

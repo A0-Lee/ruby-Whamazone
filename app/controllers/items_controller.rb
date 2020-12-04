@@ -28,14 +28,23 @@ class ItemsController < ApplicationController
   def create
     product = Product.find(params[:product_id])
     quantity = params[:quantityOrdered]
-    @item = @basket.items.build(product: product, quantityOrdered: quantity)
 
     respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item.basket, flash: {notice: 'Item was successfully added.' }}
-        format.json { render :show, status: :created, location: @item }
+      if product.quantityInStock > 0
+        @item = @basket.items.build(product: product, quantityOrdered: quantity)
+
+        if @item.save
+          format.html { redirect_to @item.basket, flash: {notice: 'Item was successfully added.' }}
+          format.json { render :show, status: :created, location: @item }
+          # Reduce the stock quantity of current product by 1 (as you can only add one product to the basket at a time)
+          product.quantityInStock -= 1
+          product.save
+        else
+          format.html { redirect_to @item.basket, flash: {alert: 'Something went wrong: Item could not be added.' }}
+          format.json { render json: @item.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :new }
+        format.html { redirect_to product, flash: {alert: 'Cannot add item as it is out of stock.'}}
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end

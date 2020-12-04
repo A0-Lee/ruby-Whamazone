@@ -8,6 +8,8 @@
 
 Product.destroy_all
 User.destroy_all
+Item.destroy_all
+Basket.destroy_all
 
 Product.create([{
   name: 'Toilet Roll',
@@ -76,6 +78,14 @@ User.create([{
   email: 'Whamazone-Guest@mail.com',
   password: 'SecretWhamazonePassword',
   password_confirmation: 'SecretWhamazonePassword'
+},
+{
+  id: '0',
+  name: 'Admin',
+  username: 'Admin',
+  email: 'Admin',
+  password: 'WHAM',
+  password_confirmation: 'WHAM'
 },
 {
   username: 'brad112',

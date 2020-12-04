@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   post 'request_form', to:'contacts#request_form'
 
   # Get all the appropriate CRUD paths/routes for our resources
-  resources :users
-  resources :sessions
+  resources :users, only: [:create, :edit, :update, :signup, :account]
+  resources :sessions, only: [:create, :login, :destroy]
   resources :products, only: [:index, :show]
   resources :baskets
   resources :items

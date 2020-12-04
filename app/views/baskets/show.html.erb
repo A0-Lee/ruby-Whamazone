@@ -5,22 +5,22 @@
   <div class="row">
     <div class="col-sm-1" align="center">
       <span>
-        <b>Image:</b>
+        <b><%=t('.show_image_column')%></b>
       </span>
     </div>
     <div class="col-sm-4" align="center">
       <span>
-        <b>Product Name:</b>
+        <b><%=t('.show_productname_column')%></b>
       </span>
     </div>
     <div class="col-sm-2" align="center">
       <span>
-        <b>Price:</b>
+        <b><%=t('.show_price')%></b>
       </span>
     </div>
     <div class="col-sm-2" align="center">
       <span>
-        <b>Quantity:</b>
+        <b><%=t('.show_quantity_column')%></b>
       </span>
     </div>
   </div>
@@ -58,15 +58,15 @@
           <%= link_to 'Back', products_path %>
         </div>
         <div class="col-sm-4" align="center">
-          <h4>Total items:
+          <h4><%=t('.show_totalitems_column')%>
             <%= @basket.items.count %></h4>
         </div>
         <div class="col-sm-2" align="center">
-          <h4>Total:
+          <h4><%=t('.show_total_column')%>
             <%=t('.show_currency')%><%= totalPrice %></h4>
         </div>
         <div class="col-sm-2" align="center">
-          <%= button_to 'Checkout', edit_basket_path(@basket), method: :get, class: "btn btn-primary" %>
+          <%= button_to t('.show_checkout_button'), edit_basket_path(@basket), method: :get, class: "btn btn-primary" %>
         </div>
       </div>
       <br>

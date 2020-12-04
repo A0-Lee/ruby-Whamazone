@@ -1,37 +1,77 @@
-<p id="notice"><%= notice %></p>
-
-<h1>My Basket</h1>
+<h1><%=t('.index_title')%></h1>
 <hr>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Customername</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>County</th>
-      <th>Postcode</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container">
+  <br>
+  <div class="row">
+    <div class="col-sm-1" align="center">
+      <span>
+        <b><%=t('.index_basket_column')%></b>
+      </span>
+    </div>
+    <div class="col-sm-1" align="center">
+      <span>
+        <b><%=t('.index_user_column')%></b>
+      </span>
+    </div>
+    <div class="col-sm-2" align="center">
+      <span>
+        <b><%=t('.index_name_column')%></b>
+      </span>
+    </div>
+    <div class="col-sm-3" align="center">
+      <span>
+        <b><%=t('.index_address_column')%></b>
+      </span>
+    </div>
+    <div class="col-sm-2" align="center">
+      <span>
+        <b><%=t('.index_postcode_column')%></b>
+      </span>
+    </div>
+    <div class="col-sm-1" align="center">
+      <span>
+        <b><%=t('.index_items_column')%></b>
+      </span>
+    </div>
+    <div class="col-sm-1" align="center"></div>
+    <div class="col-sm-1" align="center"></div>
+  </div>
+  <hr>
+  <% @baskets.each do |basket| %>
+    <div class="row">
+      <div class="col-sm-1" align="center">
+        <%= basket.id %>
+      </div>
 
-  <tbody>
-    <% @baskets.each do |basket| %>
-      <tr>
-        <td><%= basket.customerName %></td>
-        <td><%= basket.address %></td>
-        <td><%= basket.city %></td>
-        <td><%= basket.county %></td>
-        <td><%= basket.postcode %></td>
-        <td><%= link_to 'Show', basket %></td>
-        <td><%= link_to 'Edit', edit_basket_path(basket) %></td>
-        <td><%= link_to 'Destroy', basket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="col-sm-1" align="center">
+        <%= basket.user_id %>
+      </div>
 
-<br>
+      <div class="col-sm-2" align="center">
+        <%= basket.customerName %>
+      </div>
 
-<%= link_to 'New Basket', new_basket_path %>
+      <div class="col-sm-3" align="center">
+        <%= basket.address %>
+      </div>
+
+      <div class="col-sm-2" align="center">
+        <%= basket.postcode %>
+      </div>
+
+      <div class="col-sm-1" align="center">
+        <%= basket.items.count %>
+      </div>
+
+      <div class="col-sm-1">
+        <%= link_to t('.index_edit_button'), edit_basket_path(basket) %>
+      </div>
+
+      <div class="col-sm-1">
+        <%= link_to t('.index_destroy_button'), basket, method: :delete, data: { confirm: t('.index_destroy_message') } %>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+</div>

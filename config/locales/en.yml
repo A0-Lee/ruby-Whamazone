@@ -33,6 +33,18 @@
 # This makes it more modular and clear!
 en:
   baskets:
+    index:
+      index_title: "User Baskets"
+      index_basket_column: "Basket id:"
+      index_user_column: "User id:"
+      index_name_column: "Name:"
+      index_address_column: "Address:"
+      index_postcode_column: "Postcode:"
+      index_items_column: "Items:"
+      index_edit_button: "Edit"
+      index_destroy_button: "Destroy"
+      index_destroy_message: "Are you sure? This cannot be undone."
+
     edit:
       edit_title: "Fill in Your Personal Details"
       edit_customerName: "Full Name:"
@@ -49,6 +61,13 @@ en:
 
     show:
       show_currency: "£"
+      show_image_column: "Image:"
+      show_productname_column: "Product Name:"
+      show_price_column: "Price:"
+      show_quantity_column: "Quantity:"
+      show_totalitems_column: "Total items:"
+      show_total_column: "Total:"
+      show_checkout_button: "Checkout"
 
   shared:
     reviewstars:
@@ -202,7 +221,7 @@ en:
       home_title: "Welcome to Whamazone!"
       home_description: "The best (and even better) e-commerce business since 2020!"
       home_title_user: "Welcome back to Whamazone!"
-      home_greet_user: "Hello,"
+      home_greet_user: "Hi,"
       home_event1: "Got Lockdown'd? We have toilet paper in stock!"
       home_event2: "Have goods to sell? List them as a third-party seller!"
       home_event3: "Is the Pandemic bringing you down? Our prices feel the same!"
@@ -246,7 +265,7 @@ en:
 
     contact:
       contact_title: "Contact Us"
-      contact_description: "See our FAQ and our Customer Support section below for assistance:"
+      contact_description: "See our Customer Support and FAQ section below for assistance:"
       contact_cardtitle1: "Frequently Asked Questions (FAQ)"
       contact_cardtitle2: "Customer Support"
       contact_question1: "Where can I contact Customer Support?"
@@ -257,6 +276,9 @@ en:
       contact_answer3: "At Whamazone, we're experimenting with new technology that will bring the digitalization of goods through your own computer screen!"
       contact_question4: "How can I cancel my recently placed order?"
       contact_answer4: "No worries! All orders are non-existent anyways."
+      contact_question5: "Why am I only allowed to add one item at a time?"
+      contact_answer5: "Recently at Whamazone we've had issues of hoarding, scalping, and botting of certain products (toilet paper, ahem). We've decided to implement a fair approach for the availability of the stock of items."
+
       contact_link: "Form Link"
 
   footer_author: "Project by: Andy Lee"
