@@ -19,7 +19,8 @@ class BasketsController < ApplicationController
     if Basket.exists?(session[:basket_id]) && session[:basket_id] != nil
       # We only want to check the id, so we just call the id column only
       @sessionBasket = Basket.select(:id).find(session[:basket_id])
-      # Both values would be integers
+      # This checks if the session basket id matches the basket id
+      # We don't want other people accessing each other's baskets!
       if @sessionBasket.id == @basket.id
       else
         flash[:alert] = "Basket id does not match your session id."
@@ -67,7 +68,7 @@ class BasketsController < ApplicationController
   def update
     respond_to do |format|
       if @basket.update(basket_params)
-        format.html { redirect_to @basket, notice: 'Basket was successfully updated.' }
+        format.html { redirect_to orders_path, notice: 'Checkout details successfully updated.' }
         format.json { render :show, status: :ok, location: @basket }
       else
         format.html { render :edit }
@@ -89,7 +90,11 @@ class BasketsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_basket
-      @basket = Basket.find(params[:id])
+      if params[:id] != nil && Basket.exists?(params[:id])
+        @basket = Basket.find(params[:id])
+      else
+        params[:id] = nil
+      end
     end
 
     # Only allow a list of trusted parameters through.

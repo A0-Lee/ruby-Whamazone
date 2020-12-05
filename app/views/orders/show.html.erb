@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Basket:</strong>
+  <%= @order.basket %>
+</p>
+
+<p>
+  <strong>Your Receipt ID:</strong>
+  <%= @order.id %>
+</p>
+
+<p>
+  <strong>Card number:</strong>
+  <%= @order.card_number %>
+</p>
+
+<p>
+  <strong>Svc number:</strong>
+  <%= @order.svc_number %>
+</p>
+
+<p>
+  <strong>Totalcost:</strong>
+  <%= @order.totalCost %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @order.message %>
+</p>
+
+<p>
+  <strong>Orderdate:</strong>
+  <%= @order.orderDate %>
+</p>
+
+<p>
+  <strong>Deliverydate:</strong>
+  <%= @order.deliveryDate %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

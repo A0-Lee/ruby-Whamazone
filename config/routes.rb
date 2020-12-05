@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :orders
   # Establish route URL to these controller/view
   get 'main/home'
   get 'main/about'

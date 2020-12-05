@@ -73,19 +73,19 @@ Product.create([{
 }])
 
 User.create([{
-  username: 'Guest',
-  name: 'Guest',
-  email: 'Whamazone-Guest@mail.com',
-  password: 'SecretWhamazonePassword',
-  password_confirmation: 'SecretWhamazonePassword'
-},
-{
-  id: '0',
-  name: 'Admin',
+  id: 0,
+  name: 'Whamazone Admin',
   username: 'Admin',
-  email: 'Admin',
+  email: 'Admin@Whamazone.com',
   password: 'WHAM',
   password_confirmation: 'WHAM'
+},
+{
+  name: 'Tester',
+  username: 'Test',
+  email: 'test@mail.com',
+  password: 'test',
+  password_confirmation: 'test'
 },
 {
   username: 'brad112',

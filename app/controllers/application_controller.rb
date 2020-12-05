@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
 
   # Keeps track of the logged in user's attribute values in a session
   def session_user
-    # If session user id exists (handled in sessions_controller)
-    if session[:user_id]
+    # If session user id exists (handled in sessions_controller) and if user id exists in database
+    if session[:user_id] && User.exists?(session[:user_id])
       # Find the rest of the user's records from database
       @session_user = User.find(session[:user_id])
     else

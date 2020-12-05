@@ -38,7 +38,7 @@ class BasketsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update basket" do
     patch basket_url(@basket), params: { basket: { address: @basket.address, city: @basket.city, county: @basket.county, customerName: @basket.customerName, postcode: @basket.postcode, user_id: @basket.user_id } }
-    assert_redirected_to basket_url(@basket)
+    assert_redirected_to root_path
   end
 
   test "should destroy basket" do

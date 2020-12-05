@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  basket: one
+  card_number: MyString
+  svc_number: MyString
+  totalCost: 9.99
+  message: MyText
+  orderDate: 2020-12-05 20:37:20
+  deliveryDate: 2020-12-05 20:37:20
+
+two:
+  basket: two
+  card_number: MyString
+  svc_number: MyString
+  totalCost: 9.99
+  message: MyText
+  orderDate: 2020-12-05 20:37:20
+  deliveryDate: 2020-12-05 20:37:20

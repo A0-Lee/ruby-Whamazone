@@ -1,0 +1,36 @@
+<h1><%= t(".new_title")%></h1>
+<hr>
+
+<div class="">
+<%= form_with model: Order.new, local: true do |form| %>
+<p>
+  <%= form.label :card_number, t(".new_cardnumber_label") %><br>
+  <%= form.text_field :card_number, title: t(".new_cardnumber_title"), placeholder: t(".new_cardnumber_placeholder"), size: 30, :required => true %>
+</p>
+
+<p>
+  <%= form.label :svc_number, t(".new_svcnumber_label") %><br>
+  <%= form.text_field :svc_number, title: t(".new_svcnumber_title"), placeholder: t(".new_svcnumber_placeholder"), size: 30, :required => true %>
+</p>
+
+<p>
+  <%= form.label :telephone, t(".new_telephone_label") %><br>
+  <%= form.text_field :telephone, title: t(".new_telephone_title"), placeholder: t(".new_telephone_placeholder"), size: 30, :required => true %>
+</p>
+
+<p>
+  <%= form.label :message, t(".new_message_label") %><br>
+  <%= form.text_area :message, title: t(".new_message_title"), placeholder: t(".new_message_placeholder"), size: "50x5"%>
+</p>
+
+<p>
+  <b>NOTE:</b> <%= t(".signup_email_note") %>
+  </p>
+
+<p>
+  <%= form.submit t(".new_submit_button"), class: "btn btn-warning"%>
+</p>
+<% end %>
+
+<%= link_to 'Back', :back %>
+</div>

@@ -32,6 +32,23 @@
 # Any titles/heading of english text presented on the view is written and referred here!
 # This makes it more modular and clear!
 en:
+  orders:
+    new:
+      new_title: "Checkout"
+      new_cardnumber_label: "Card Number:"
+      new_cardnumber_title: "Enter your Card number"
+      new_cardnumber_placeholder: "0123 4567 8910 1112"
+      new_svcnumber_label: "SVC Number:"
+      new_svcnumber_title: "Enter the 3 digits on the back"
+      new_svcnumber_placeholder: "123"
+      new_telephone_label: "Telephone:"
+      new_telephone_title: "Enter your Telephone number"
+      new_telephone_placeholder: "01234 567891"
+      new_message_label: "Message:"
+      new_message_title: "Enter your Message"
+      new_message_placeholder: "Delivery Instructions (optional)"
+      new_submit_button: "Finalise Order"
+
   baskets:
     index:
       index_title: "User Baskets"
