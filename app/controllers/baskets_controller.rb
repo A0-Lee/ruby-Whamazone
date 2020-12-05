@@ -22,7 +22,7 @@ class BasketsController < ApplicationController
       # Both values would be integers
       if @sessionBasket.id == @basket.id
       else
-        flash[:alert] = "Basket id does not matching with session id."
+        flash[:alert] = "Basket id does not match your session id."
         redirect_to root_path
       end
     else

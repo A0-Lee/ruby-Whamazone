@@ -26,6 +26,7 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
+    # The product id is sent from the product show page using the Buy button
     product = Product.find(params[:product_id])
     quantity = params[:quantityOrdered]
 
@@ -36,7 +37,7 @@ class ItemsController < ApplicationController
         if @item.save
           format.html { redirect_to @item.basket, flash: {notice: 'Item was successfully added.' }}
           format.json { render :show, status: :created, location: @item }
-          # Reduce the stock quantity of current product by 1 (as you can only add one product to the basket at a time)
+          # Reduce the stock quantity of the current product by 1 (as you can only add one product to the basket at a time)
           product.quantityInStock -= 1
           product.save
         else
@@ -66,9 +67,14 @@ class ItemsController < ApplicationController
 
   def remove_item
     @item = Item.find(params[:id])
+    product = Product.find(@item.product_id)
+
     if Basket.exists?(session[:basket_id]) && session[:basket_id] != nil
       @basket = Basket.find(session[:basket_id])
       @item.destroy
+      # Increment the stock quantity of the current product by 1 (as you can only remove 1 product at a time)
+      product.quantityInStock += 1
+      product.save
       flash[:notice] = "Item was successfully removed."
       redirect_to @basket
     else

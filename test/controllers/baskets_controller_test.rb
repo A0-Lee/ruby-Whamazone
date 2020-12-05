@@ -6,8 +6,9 @@ class BasketsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
+    # Should only be accessible to admin account
     get baskets_url
-    assert_response :success
+    assert_redirected_to root_path
   end
 
   test "should get new" do
@@ -23,14 +24,16 @@ class BasketsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to basket_url(Basket.last)
   end
 
-  test "should show basket" do
+  test "should not show basket" do
+    # Basket session id is nil so it should not give permission to view basket
     get basket_url(@basket)
-    assert_response :success
+    assert_redirected_to root_path
   end
 
-  test "should get edit" do
+  test "should not get edit" do
+    # Basket session id is nil, so should redirect to root path
     get edit_basket_url(@basket)
-    assert_response :success
+    assert_redirected_to root_path
   end
 
   test "should update basket" do

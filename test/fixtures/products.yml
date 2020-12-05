@@ -6,7 +6,7 @@ one:
   category: Essentials
   image_url: backpack.jpeg
   price: 9.99
-  quantityInStock: 1
+  quantityInStock: 10
 
 two:
   name: MyString
@@ -14,4 +14,4 @@ two:
   category: MyString
   image_url: backpack.jpeg
   price: 9.99
-  quantityInStock: 1
+  quantityInStock: 10

@@ -16,7 +16,7 @@ class MainControllerTest < ActionDispatch::IntegrationTest
 
     assert_template layout: 'application'
     assert_select 'h1', 'Contact Us'
-    assert_select 'p', 'See our FAQ and our Customer Support section below for assistance:'
+    assert_select 'p', 'See our Customer Support and FAQ section below for assistance:'
   end
 
   test "should get about" do

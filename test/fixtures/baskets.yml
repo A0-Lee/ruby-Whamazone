@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
+  user_id: 1
   customerName: MyString
   address: MyString
   city: MyString
@@ -9,7 +9,7 @@ one:
   postcode: MyString
 
 two:
-  user: two
+  user_id: 2
   customerName: MyString
   address: MyString
   city: MyString

@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   # Get all the appropriate CRUD paths/routes for our resources
   resources :users, only: [:create, :edit, :update, :signup, :account]
   resources :sessions, only: [:create, :login, :destroy]
-  resources :products, only: [:index, :show]
+  resources :products
   resources :baskets
   resources :items
 
