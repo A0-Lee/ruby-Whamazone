@@ -112,23 +112,9 @@ class ItemsController < ApplicationController
         @basket = Basket.find(session[:basket_id])
         session[:basket_id] = @basket.id
       else
-        # Otherwise create a new basket depending if the user is logged in or not
-        if user_logged_in
-          # If user is logged in, check if an existing basket is aleady in use
-          if Basket.exists?(user_id: session[:user_id])
-            @basket = Basket.find_by user_id: session[:user_id]
-            session[:basket_id] = @basket.id
-          else
-            # else create a new basket for the user, using their user id
-            @basket = Basket.create(user_id: session[:user_id])
-            session[:basket_id] = @basket.id
-          end
-        else
-          # else create a new basket for a new session
-          @basket = Basket.create
-          session[:basket_id] = @basket.id
-        end
+        # else create a new basket for a new session
+        @basket = Basket.create
+        session[:basket_id] = @basket.id
       end
     end
-
-end
+  end

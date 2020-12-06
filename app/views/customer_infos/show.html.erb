@@ -1,0 +1,50 @@
+<%= render 'shared/flashmessage' %>
+<h1><%=t('.show_title')%></h1>
+<hr>
+<div class="text-center text-left">
+
+<br>
+<p>
+  <strong><%=t('.show_account_row')%></strong>
+  <%= @customer_info.user.email %>
+</p>
+
+<p>
+  <strong><%=t('.show_name_row')%></strong>
+  <%= @customer_info.customerName %>
+</p>
+
+<p>
+  <strong><%=t('.show_telephone_row')%></strong>
+  <%= @customer_info.telephone %>
+</p>
+
+<p>
+  <strong><%=t('.show_address_row')%></strong>
+  <%= @customer_info.address %>
+</p>
+
+<p>
+  <strong><%=t('.show_city_row')%></strong>
+  <%= @customer_info.city %>
+</p>
+
+<p>
+  <strong><%=t('.show_county_row')%></strong>
+  <%= @customer_info.county %>
+</p>
+
+<p>
+  <strong><%=t('.show_postcode_row')%></strong>
+  <%= @customer_info.postcode %>
+</p>
+
+<br>
+<%= button_to t('.show_order_button'), checkout_details_order_path(), method: :get, class: "btn btn-primary" %>
+<br>
+
+<%= link_to 'Edit', edit_customer_info_path(@customer_info) %>
+|
+<%= link_to 'Back', :back %>
+
+</div>

@@ -32,22 +32,55 @@
 # Any titles/heading of english text presented on the view is written and referred here!
 # This makes it more modular and clear!
 en:
+  customer_infos:
+    show:
+      show_title: "Your Order Details"
+      show_account_row: "User Account (if any):"
+      show_name_row: "Full Name:"
+      show_telephone_row: "Telephone:"
+      show_address_row: "Address:"
+      show_city_row: "City:"
+      show_county_row: "County:"
+      show_postcode_row: "Postcode:"
+      show_order_button: "Continue"
+    new:
+      new_title: "Fill in Your Personal Details"
+
+    form:
+      form_customerName_label: "Full Name:"
+      form_customerName_title: "Enter your Full Name"
+      form_telephone_label: "Telephone:"
+      form_telephone_title: "Enter your Telephone number"
+      form_address_label: "Address:"
+      form_address_title: "Enter your Address"
+      form_city_label: "City:"
+      form_city_title: "Enter your City number"
+      form_county_label: "County:"
+      form_county_title: "Enter your local County"
+      form_postcode_label: "Postcode:"
+      form_postcode_title: "Enter your Postcode"
+      form_submit_button: "Continue Checkout"
+
+
+
   orders:
     new:
-      new_title: "Checkout"
-      new_cardnumber_label: "Card Number:"
-      new_cardnumber_title: "Enter your Card number"
-      new_cardnumber_placeholder: "0123 4567 8910 1112"
-      new_svcnumber_label: "SVC Number:"
-      new_svcnumber_title: "Enter the 3 digits on the back"
-      new_svcnumber_placeholder: "123"
-      new_telephone_label: "Telephone:"
-      new_telephone_title: "Enter your Telephone number"
-      new_telephone_placeholder: "01234 567891"
-      new_message_label: "Message:"
-      new_message_title: "Enter your Message"
-      new_message_placeholder: "Delivery Instructions (optional)"
-      new_submit_button: "Finalise Order"
+      new_title: "Checkout Basket"
+
+    form:
+      form_cardnumber_label: "Card Number:"
+      form_cardnumber_title: "Enter your Card number"
+      form_cardnumber_placeholder: "0123 4567 8910 1112"
+      form_svcnumber_label: "SVC Number:"
+      form_svcnumber_title: "Enter the 3 digits on the back"
+      form_svcnumber_placeholder: "123"
+      form_message_label: "Message:"
+      form_message_title: "Enter your Message"
+      form_message_placeholder: "Delivery Instructions (optional)"
+      form_deliverydate_label: "Select preferred Delivery Date:"
+      form_submit_button: "Finalise Order"
+      form_note_disclaimer: "Pretend this is a real payment system!"
+      form_note_title: "NOTE:"
 
   baskets:
     index:

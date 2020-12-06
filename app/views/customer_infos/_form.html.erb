@@ -1,0 +1,47 @@
+<%= form_with(model: customer_info, local: true) do |form| %>
+  <% if customer_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(customer_info.errors.count, "error") %> prohibited this customer_info from being saved:</h2>
+
+      <ul>
+      <% customer_info.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :customerName, t(".form_customerName_label") %> <br>
+    <%= form.text_field :customerName, title: t(".form_customerName_title"), size: 30, :required => true  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telephone,  t(".form_telephone_label") %> <br>
+    <%= form.text_field :telephone, title: t(".form_telephone_title"), size: 30, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address,  t(".form_address_label") %> <br>
+    <%= form.text_field :address, title:  t(".form_address_title"), size: 30, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city,  t(".form_city_label") %> <br>
+    <%= form.text_field :city, title:  t(".form_city_title"), size: 30, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :county,  t(".form_county_label") %> <br>
+    <%= form.text_field :county, title:  t(".form_county_title"), size: 30, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :postcode,  t(".form_postcode_label") %> <br>
+    <%= form.text_field :postcode, title:  t(".form_postcode_title"), size: 30, :required => true %>
+  </div>
+
+  <div class="actions"> <br>
+    <%= form.submit  t(".form_submit_button"), class: "btn btn-primary"%>
+  </div>
+<% end %>

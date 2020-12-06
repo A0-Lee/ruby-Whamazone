@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :orders
+
   # Establish route URL to these controller/view
   get 'main/home'
   get 'main/about'
@@ -14,6 +14,9 @@ Rails.application.routes.draw do
 
   delete 'remove_item', to: 'items#remove_item'
 
+  get 'checkout/details', to: 'customer_infos#new'
+  get 'checkout/details/order', to: 'orders#new'
+
   # Contact form that uses mailer to send email (if it was linked to SMTP server)
   get 'contacts/form'
 
@@ -26,6 +29,8 @@ Rails.application.routes.draw do
   resources :products
   resources :baskets
   resources :items
+  resources :orders
+  resources :customer_infos
 
   # This is the first page the user will first load into as it is the root page
   root 'main#home'

@@ -10,18 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_05_203720) do
+ActiveRecord::Schema.define(version: 2020_12_06_170402) do
 
   create_table "baskets", force: :cascade do |t|
+    t.integer "customer_info_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_info_id"], name: "index_baskets_on_customer_info_id"
+  end
+
+  create_table "customer_infos", force: :cascade do |t|
     t.integer "user_id"
     t.string "customerName"
+    t.string "telephone"
     t.string "address"
     t.string "city"
     t.string "county"
     t.string "postcode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_baskets_on_user_id"
+    t.index ["user_id"], name: "index_customer_infos_on_user_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -38,10 +46,8 @@ ActiveRecord::Schema.define(version: 2020_12_05_203720) do
     t.integer "basket_id"
     t.string "card_number"
     t.string "svc_number"
-    t.string "telephone"
     t.text "message"
-    t.decimal "totalCost"
-    t.datetime "orderDate"
+    t.decimal "orderCost"
     t.datetime "deliveryDate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

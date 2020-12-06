@@ -68,7 +68,7 @@ class BasketsController < ApplicationController
   def update
     respond_to do |format|
       if @basket.update(basket_params)
-        format.html { redirect_to orders_path, notice: 'Checkout details successfully updated.' }
+        format.html { redirect_to checkout_order_path, notice: 'Checkout details successfully updated.' }
         format.json { render :show, status: :ok, location: @basket }
       else
         format.html { render :edit }

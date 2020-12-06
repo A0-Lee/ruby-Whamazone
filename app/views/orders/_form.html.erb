@@ -1,3 +1,5 @@
+
+<div class="center-content-order">
 <%= form_with(model: order, local: true) do |form| %>
   <% if order.errors.any? %>
     <div id="error_explanation">
@@ -11,42 +13,40 @@
     </div>
   <% end %>
 
+<br>
+<br>
+<br>
   <div class="field">
-    <%= form.label :basket_id %>
-    <%= form.text_field :basket_id %>
+    <%= form.label :card_number, t(".form_cardnumber_label")%><br>
+    <%= form.text_field :card_number, title: t(".form_cardnumber_title"), placeholder: t(".form_cardnumber_placeholder"), size: 30, :required => true %>
   </div>
+  <br>
 
   <div class="field">
-    <%= form.label :card_number %>
-    <%= form.text_field :card_number %>
+    <%= form.label :svc_number, t(".form_svcnumber_label")%><br>
+    <%= form.text_field :svc_number, title: t(".form_svcnumber_title"), placeholder: t(".form_svcnumber_placeholder"), size: 30, :required => true %>
   </div>
+  <br>
 
   <div class="field">
-    <%= form.label :svc_number %>
-    <%= form.text_field :svc_number %>
+    <%= form.label :message, t(".form_message_label")%><br>
+    <%= form.text_area :message, title: t(".form_message_title"), placeholder: t(".form_message_placeholder"), size: "50x5"%>
   </div>
+  <br>
 
   <div class="field">
-    <%= form.label :totalCost %>
-    <%= form.text_field :totalCost %>
+    <%= form.label :deliveryDate, t(".form_deliverydate_label")%>
+    <%= form.datetime_select :deliveryDate, start_year: 2020, end_year: 2021 %>
   </div>
+  <br>
 
   <div class="field">
-    <%= form.label :message %>
-    <%= form.text_area :message %>
+    <b><%=t(".form_note_title")%></b> <%=t(".form_note_disclaimer")%>
   </div>
-
-  <div class="field">
-    <%= form.label :orderDate %>
-    <%= form.datetime_select :orderDate %>
-  </div>
-
-  <div class="field">
-    <%= form.label :deliveryDate %>
-    <%= form.datetime_select :deliveryDate %>
-  </div>
+  <br>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit t(".form_submit_button"), class: "btn btn-warning"%>
   </div>
 <% end %>
+</div>

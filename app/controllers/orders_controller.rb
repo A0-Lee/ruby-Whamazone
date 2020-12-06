@@ -24,15 +24,25 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @sessionBasket = Basket.find(session[:basket_id])
+    params[:order][:basket_id] = session[:basket_id]
+    @basket = Basket.find(session[:basket_id])
+
+    totalPrice = 0
+    @basket.items.each do |item|
+      totalPrice += item.product.price
+    end
+
+    params[:order][:orderCost] = totalPrice
+
     @order = Order.new(order_params)
 
     respond_to do |format|
       if @order.save
+        session[:basket_id] = nil
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
-        format.html { render :new }
+        format.html { render :new, alert: 'Error in creating Order.' }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
@@ -70,6 +80,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:card_number, :svc_number,  :message)
+      params.require(:order).permit(:basket_id, :card_number, :svc_number, :telephone, :message, :orderCost, :orderDate, :deliveryDate)
     end
 end

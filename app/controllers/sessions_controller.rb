@@ -13,9 +13,18 @@ class SessionsController < ApplicationController
       flash[:notice] = I18n.t('sessions.login.login_successful')
 
       # If the user has created a basket in a previous sesssion, use the same basket
-      if Basket.exists?(user_id: session[:user_id])
-        @basket = Basket.find_by user_id: session[:user_id]
-        session[:basket_id] = @basket.id
+      # We first check if a user has a customer record
+      if CustomerInfo.exists?(user_id: session[:user_id])
+        @customerInfo = CustomerInfo.find_by user_id: session[:user_id]
+          # If they do, find if the customer record is linked to an existing basket
+        if Basket.exists?(@customerInfo.id)
+          @basket = Basket.find_by(@customerInfo.id)
+          # Ensure that the basket has not already been ordered
+          if !(Order.exists?(@basket.id))
+            # Set basket session as appropriate
+            session[:basket_id] = @basket.id
+          end
+        end
       end
 
       redirect_to root_path

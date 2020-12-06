@@ -39,7 +39,7 @@ Author Notes:
 -----------------------------------------
 Any documentation and concerns or issues related to the project are addressed here in this file (e.g. copyright issues, design and code issues etc.).
 
-I used [RubyGems] (https://rubygems.org/) to handle and install any ruby gem packages as well as Ruby and Rails for this project.
+I also used [Ruby Version Manager (RVM)](https://rvm.io) to handle and install any ruby gem packages as well as Ruby and Rails for this project.
 
 
 Set-up Instructions:
@@ -91,24 +91,6 @@ If you wish to view all the existing records in their respective table at any po
 - Followed by [Table Name].all
 - For example, User.all would show all the existing records in the User table
 - Write "quit" to exit the rails console
-
-
-Design Choices:
------------------------------------------
-There may be some unconventional design decisions relating to the database schema which I will attempt to explain:
-
-**Why are the delivery details of the order assigned to the table Basket and not User or Order?**<br/>
-Any customer may checkout regardless if they have an account or not. In this case, it would make sense to apply the details of the customer's delivery details to their basket session as anyone checking out will always have a basket.
-
-**Then why not take these delivery details into the Order table?**<br/>
-I wanted to encourage re-usability of the customer's details. In this case, if a customer has a User account, they will *always* use the same Basket id as the relationship between User and Basket is one-to-one.
-
-Knowing this, we can save the customer's delivery details to their own basket to checkout quickly next time. However, the same cannot be done with Order as each checkout is unique, and therefore would not save the customer's details for next time.
-
-**So why not store these delivery details in the User table?**<br/>
-Remember that people without User accounts can checkout/buy products as customers too! This is called a checkout as a Guest system, where a customer is not required to login to a User account to checkout. So we cannot store order details into a User account (unless we created a Guest account each time).
-
-In this case, it would make perfect sense for the customer's delivery details to live and die with their basket session as it will be used at least once per checkout (the basket id session only changes when logging in or out of accounts).
 
 
 Copyright Disclaimer:
