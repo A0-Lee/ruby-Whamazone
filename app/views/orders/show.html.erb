@@ -2,11 +2,11 @@
 
 <p>
   <strong>Basket:</strong>
-  <%= @order.basket %>
+  <%= @order.basket.id %>
 </p>
 
 <p>
-  <strong>Your Receipt ID:</strong>
+  <strong>Your Order-Reference ID:</strong>
   <%= @order.id %>
 </p>
 
@@ -21,8 +21,8 @@
 </p>
 
 <p>
-  <strong>Totalcost:</strong>
-  <%= @order.orderCost %>
+  <strong>Total Charged:</strong>
+  <%= @order.orderTotal %>
 </p>
 
 <p>
@@ -32,7 +32,7 @@
 
 
 <p>
-  <strong>Deliverydate:</strong>
+  <strong>Preferred Delivery Date:</strong>
   <%= @order.deliveryDate %>
 </p>
 

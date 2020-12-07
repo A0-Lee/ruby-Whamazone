@@ -82,6 +82,7 @@ Tables:
 - Product
 - Basket
 - Item (Products added to the User's Basket are called Items)
+- CustomerInfo
 - Order
 
 To ensure that the website is populated with products and users, you can run the command "rake db:seed" in the terminal which will execute the SQL commands in the seeds.rb file. However, all intended records to be used for this project should be ready by default.

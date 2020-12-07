@@ -113,8 +113,16 @@ class ItemsController < ApplicationController
         session[:basket_id] = @basket.id
       else
         # else create a new basket for a new session
-        @basket = Basket.create
-        session[:basket_id] = @basket.id
+        if user_logged_in
+          if CustomerInfo.exists?(user_id: session[:user_id])
+            @customerInfo = CustomerInfo.find_by user_id: session[:user_id]
+            @basket = Basket.create(customer_info_id: @customerInfo.id)
+            session[:basket_id] = @basket.id
+          end
+        else
+          @basket = Basket.create
+          session[:basket_id] = @basket.id
+        end
       end
     end
   end

@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_170402) do
     t.string "card_number"
     t.string "svc_number"
     t.text "message"
-    t.decimal "orderCost"
+    t.decimal "orderTotal"
     t.datetime "deliveryDate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

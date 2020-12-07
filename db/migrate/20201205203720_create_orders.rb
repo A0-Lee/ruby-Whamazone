@@ -5,7 +5,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.string :card_number
       t.string :svc_number
       t.text :message
-      t.decimal :orderCost
+      t.decimal :orderTotal
       t.datetime :deliveryDate
 
       t.timestamps

@@ -50,6 +50,7 @@ class BasketsController < ApplicationController
   # POST /baskets
   # POST /baskets.json
   def create
+
     @basket = Basket.new(basket_params)
 
     respond_to do |format|
@@ -99,7 +100,7 @@ class BasketsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def basket_params
-      params.require(:basket).permit(:customerName, :address, :city, :county, :postcode)
+      params.require(:basket).permit(:customer_info_id, :customerName, :address, :city, :county, :postcode)
     end
 
 end

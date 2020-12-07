@@ -24,27 +24,38 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    params[:order][:basket_id] = session[:basket_id]
-    @basket = Basket.find(session[:basket_id])
+    # We first create a DateTime object using our form parameters
+    @preferreddeliveryDateObject = DateTime.new(params[:order]["deliveryDate(1i)"].to_i, params[:order]["deliveryDate(2i)"].to_i, params[:order]["deliveryDate(3i)"].to_i, params[:order]["deliveryDate(4i)"].to_i, params[:order]["deliveryDate(5i)"].to_i)
+    # Then we convert our preferred Delivery Date using to_i() - where to_i() converts Date Time into seconds since the Unix epoch
+    @preferredDeliveryDate = @preferreddeliveryDateObject.to_i()
+    @currentDateTime = DateTime.current().to_i()
 
-    totalPrice = 0
-    @basket.items.each do |item|
-      totalPrice += item.product.price
-    end
+    if @preferredDeliveryDate > @currentDateTime
+      params[:order][:basket_id] = session[:basket_id]
+      @basket = Basket.find(session[:basket_id])
 
-    params[:order][:orderCost] = totalPrice
-
-    @order = Order.new(order_params)
-
-    respond_to do |format|
-      if @order.save
-        session[:basket_id] = nil
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new, alert: 'Error in creating Order.' }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+      totalPrice = 0
+      @basket.items.each do |item|
+        totalPrice += item.product.price
       end
+
+      params[:order][:orderTotal] = totalPrice
+
+      @order = Order.new(order_params)
+
+      respond_to do |format|
+        if @order.save
+          session[:basket_id] = nil
+          format.html { redirect_to @order, notice: 'Order was successfully created.' }
+          format.json { render :show, status: :created, location: @order }
+        else
+          format.html { render :new, alert: 'Error in creating Order.' }
+          format.json { render json: @order.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      redirect_to checkout_details_order_path
+      flash[:alert] = "Preferred Delivery Date must be greater than Current Date Time!"
     end
   end
 
@@ -80,6 +91,7 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:basket_id, :card_number, :svc_number, :telephone, :message, :orderCost, :orderDate, :deliveryDate)
+      # Since we aren't using a real payment system, there's no need to verify real credentials
+      params.require(:order).permit(:basket_id, :card_number, :svc_number, :telephone, :message, :orderTotal, :orderDate, :deliveryDate)
     end
 end

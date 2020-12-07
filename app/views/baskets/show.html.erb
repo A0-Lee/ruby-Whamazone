@@ -29,7 +29,7 @@
     <% @basket.items.each do |item| %>
       <div class="row">
         <div class="col-sm-1" align="center">
-          <a href="<%= products_path %>/<%= item.product.id %>"><img src="<%= asset_path(item.product.image_url)%>" alt="<%= item.product.name %>" class="img-icon"></a>
+          <a href="<%= products_path(@product) %>"><img src="<%= asset_path(item.product.image_url)%>" alt="<%= item.product.name %>" class="img-icon"></a>
         </div>
 
         <div class="col-sm-4" align="center">

@@ -17,10 +17,11 @@ class SessionsController < ApplicationController
       if CustomerInfo.exists?(user_id: session[:user_id])
         @customerInfo = CustomerInfo.find_by user_id: session[:user_id]
           # If they do, find if the customer record is linked to an existing basket
-        if Basket.exists?(@customerInfo.id)
-          @basket = Basket.find_by(@customerInfo.id)
+        if Basket.exists?(customer_info_id: @customerInfo.id)
+          # We want the most recent matching basket record, as many baskets can have the same customer info id
+          @basket = Basket.where(customer_info_id: @customerInfo.id).order("created_at ASC").last
           # Ensure that the basket has not already been ordered
-          if !(Order.exists?(@basket.id))
+          if !(Order.exists?(basket_id: @basket.id))
             # Set basket session as appropriate
             session[:basket_id] = @basket.id
           end
