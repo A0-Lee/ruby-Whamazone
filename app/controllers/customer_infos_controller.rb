@@ -4,7 +4,12 @@ class CustomerInfosController < ApplicationController
   # GET /customer_infos
   # GET /customer_infos.json
   def index
-    @customer_infos = CustomerInfo.all
+    if session[:user_id] != 0
+      flash[:alert] = "You do not have permission to access this page."
+      redirect_to root_path
+    else
+      @customer_infos = CustomerInfo.all
+    end
   end
 
   # GET /customer_infos/1
@@ -19,7 +24,7 @@ class CustomerInfosController < ApplicationController
       @userCustomerInfo = CustomerInfo.find_by user_id: session[:user_id]
       redirect_to @userCustomerInfo
     end
-    
+
     @customer_info = CustomerInfo.new
   end
 
@@ -42,6 +47,11 @@ class CustomerInfosController < ApplicationController
       if @customer_info.save
         format.html { redirect_to @customer_info, notice: 'Customer info was successfully created.' }
         format.json { render :show, status: :created, location: @customer_info }
+
+        if basket_in_session && Basket.exists?(session[:basket_id])
+          @currentBasket = Basket.find(session[:basket_id])
+          @currentBasket.update(customer_info_id: @customer_info.id)
+        end
       else
         format.html { render :new }
         format.json { render json: @customer_info.errors, status: :unprocessable_entity }

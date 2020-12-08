@@ -6,7 +6,12 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    if session[:user_id] != 0
+      flash[:alert] = "You do not have permission to access this page."
+      redirect_to root_path
+    else
+      @items = Item.all
+    end
   end
 
   # GET /items/1
@@ -117,6 +122,9 @@ class ItemsController < ApplicationController
           if CustomerInfo.exists?(user_id: session[:user_id])
             @customerInfo = CustomerInfo.find_by user_id: session[:user_id]
             @basket = Basket.create(customer_info_id: @customerInfo.id)
+            session[:basket_id] = @basket.id
+          else
+            @basket = Basket.create
             session[:basket_id] = @basket.id
           end
         else

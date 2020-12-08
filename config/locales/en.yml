@@ -43,6 +43,7 @@ en:
       show_county_row: "County:"
       show_postcode_row: "Postcode:"
       show_order_button: "Continue"
+
     new:
       new_title: "Fill in Your Personal Details"
 
@@ -64,13 +65,24 @@ en:
 
 
   orders:
+    show:
+      show_title: "Your Order Information"
+      show_basketID_display: "Basket ID:"
+      show_orderID_display: "Your Order-Reference ID:"
+      show_cardNumber_display: "Card Number:"
+      show_svcNumber_display: "SVC Number:"
+      show_orderTotal_display: "Total Charged:"
+      show_message_display: "Message (if any):"
+      show_deliveryDate_display: "Preferred Delivery Date"
+      show_currency: "£"
+
     new:
       new_title: "Checkout Basket"
 
     form:
       form_cardnumber_label: "Card Number:"
       form_cardnumber_title: "Enter your Card number"
-      form_cardnumber_placeholder: "0123 4567 8910 1112"
+      form_cardnumber_placeholder: "1234 1234 1234 1234"
       form_svcnumber_label: "SVC Number:"
       form_svcnumber_title: "Enter the 3 digits on the back"
       form_svcnumber_placeholder: "123"
@@ -82,14 +94,13 @@ en:
       form_note_disclaimer: "Pretend this is a real payment system!"
       form_note_title: "NOTE:"
 
+
+
   baskets:
     index:
       index_title: "User Baskets"
       index_basket_column: "Basket id:"
-      index_user_column: "User id:"
-      index_name_column: "Name:"
-      index_address_column: "Address:"
-      index_postcode_column: "Postcode:"
+      index_customerInfo_column: "Customer_Info id:"
       index_items_column: "Items:"
       index_edit_button: "Edit"
       index_destroy_button: "Destroy"
@@ -119,6 +130,8 @@ en:
       show_total_column: "Total:"
       show_checkout_button: "Checkout"
 
+
+
   shared:
     reviewstars:
       reviewstars_title: "Average rating of this product is 2.5 out of 5."
@@ -135,6 +148,7 @@ en:
       header_account: "Account"
       header_login: "Login"
       header_logout: "Logout"
+      header_order: "My Orders"
       header_search_button: "Search"
 
     banner:
@@ -144,6 +158,7 @@ en:
       badge_title: "This product is so good, you should just buy it!"
       badge_company: "Whamazone's "
       badge_name: "Just-buy-it"
+
 
 
   products:
@@ -164,6 +179,7 @@ en:
       index_buy_button: "Buy"
 
 
+
   sessions:
     login:
       login_title: "Login with your Whamazone Account"
@@ -182,6 +198,7 @@ en:
       login_prevent_title: "Don't be sneaky ;)"
       login_prevent_desc: "You're already logged into your account!"
       login_link_signup: "Sign-up here!"
+
 
 
   users:
@@ -243,6 +260,7 @@ en:
       signup_passwords_do_not_match: "Both password fields do not match!"
 
 
+
   contacts:
     request_form:
       form_sent: "Form has successfully been received!"
@@ -264,6 +282,7 @@ en:
       form_message_placeholder: "Enter your message here"
       form_enter_message: "Enter your message here"
       form_submit: "Submit"
+
 
 
   main:
@@ -330,5 +349,7 @@ en:
       contact_answer5: "Recently at Whamazone we've had issues of hoarding, scalping, and botting of certain products (toilet paper, ahem). We've decided to implement a fair approach for the availability of the stock of items."
 
       contact_link: "Form Link"
+
+
 
   footer_author: "Project by: Andy Lee"

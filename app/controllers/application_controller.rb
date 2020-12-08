@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   # Define global methods that can be used in other controllers/views
-  helper_method :session_user, :user_logged_in, :count_basket
+  helper_method :session_user, :user_logged_in, :count_basket, :is_string_number?
 
   # Keeps track of the logged in user's attribute values in a session
   def session_user
@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def session_basket
-    if sesson[:basket_id]
+    if session[:basket_id]
       @session_basket = Basket.find(session[:basket_id])
     else
       @session_basket = nil
@@ -40,4 +40,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-end
+  # This method is used in the orders_controller to check the card and svc number fields
+  def is_string_number? string
+    # Returns true if string is a number, else it is rescued by false
+      true if Float(string) rescue false
+    end
+  end

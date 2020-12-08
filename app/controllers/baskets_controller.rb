@@ -21,8 +21,7 @@ class BasketsController < ApplicationController
       @sessionBasket = Basket.select(:id).find(session[:basket_id])
       # This checks if the session basket id matches the basket id
       # We don't want other people accessing each other's baskets!
-      if @sessionBasket.id == @basket.id
-      else
+      if !(@sessionBasket.id == @basket.id)
         flash[:alert] = "Basket id does not match your session id."
         redirect_to root_path
       end

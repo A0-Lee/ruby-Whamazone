@@ -4,10 +4,12 @@
 <div class="text-center text-left">
 
 <br>
+<% if user_logged_in %>
 <p>
   <strong><%=t('.show_account_row')%></strong>
   <%= @customer_info.user.email %>
 </p>
+<% end %>
 
 <p>
   <strong><%=t('.show_name_row')%></strong>

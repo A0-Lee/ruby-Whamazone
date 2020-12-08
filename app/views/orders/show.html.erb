@@ -1,38 +1,42 @@
-<p id="notice"><%= notice %></p>
+<%= render 'shared/flashmessage' %>
 
+<h1><%=t('.show_title')%></h1>
+<hr>
+
+<br>
 <p>
-  <strong>Basket:</strong>
+  <strong><%=t('.show_basketID_display')%></strong>
   <%= @order.basket.id %>
 </p>
 
 <p>
-  <strong>Your Order-Reference ID:</strong>
+  <strong><%=t('.show_orderID_display')%></strong>
   <%= @order.id %>
 </p>
 
 <p>
-  <strong>Card number:</strong>
-  <%= @order.card_number %>
+  <strong><%=t('.show_cardNumber_display')%></strong>
+  <%= '*' * (@order.card_number).length %>
 </p>
 
 <p>
-  <strong>Svc number:</strong>
-  <%= @order.svc_number %>
+  <strong><%=t('.show_svcNumber_display')%></strong>
+  <%= '*' * (@order.svc_number).length %>
 </p>
 
 <p>
-  <strong>Total Charged:</strong>
-  <%= @order.orderTotal %>
+  <strong><%=t('.show_orderTotal_display')%></strong>
+  <%= t('.show_currency') %><%= @order.orderTotal %>
 </p>
 
 <p>
-  <strong>Message:</strong>
+  <strong><%=t('.show_message_display')%></strong>
   <%= @order.message %>
 </p>
 
 
 <p>
-  <strong>Preferred Delivery Date:</strong>
+  <strong><%=t('.show_deliveryDate_display')%></strong>
   <%= @order.deliveryDate %>
 </p>
 

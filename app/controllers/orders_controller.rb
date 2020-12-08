@@ -4,7 +4,28 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    if user_logged_in
+      if CustomerInfo.exists?(user_id: session[:user_id])
+        @customerInfo = CustomerInfo.find_by user_id: session[:user_id]
+        
+        if Basket.exists?(customer_info_id: @customerInfo.id)
+          # Find all relevant baskets to the user's linked customerInfo.id
+          @baskets = Basket.where(customer_info_id: @customerInfo.id).order("created_at ASC")
+          # Check if at least one order is linked to the user's basket
+          if Order.exists?(basket_id: @baskets.last.id)
+            # Append all the relevant orders into an array
+            @orders = Array.new
+            @baskets.each do |basket|
+              @orders.append(Order.find_by basket_id: basket.id)
+            end
+          end
+        end
+      end
+    else
+      flash[:alert] = "Sign into your account to see your orders."
+      redirect_to root_path
+    end
+    #@orders = Order.all
   end
 
   # GET /orders/1
@@ -26,32 +47,70 @@ class OrdersController < ApplicationController
   def create
     # We first create a DateTime object using our form parameters
     @preferreddeliveryDateObject = DateTime.new(params[:order]["deliveryDate(1i)"].to_i, params[:order]["deliveryDate(2i)"].to_i, params[:order]["deliveryDate(3i)"].to_i, params[:order]["deliveryDate(4i)"].to_i, params[:order]["deliveryDate(5i)"].to_i)
-    # Then we convert our preferred Delivery Date using to_i() - where to_i() converts Date Time into seconds since the Unix epoch
+    # Then we convert our preferred Delivery Date using to_i() - where to_i() converts our Date Time object into seconds since the Unix epoch
     @preferredDeliveryDate = @preferreddeliveryDateObject.to_i()
     @currentDateTime = DateTime.current().to_i()
 
+    # Ensure that we check the svc and card number are the correct lengths and that they are numbers
+    # Since this is a practice website, no real payment system is in place (thankfully)
+    @svcNumberParams = params[:order][:svc_number]
+    @cardNumberParams = params[:order][:card_number]
+
+    if @svcNumberParams != nil
+      # The .delete() methods remove any white spaces and dots - We remove dots because our is_string_number? method also accepts float values
+      @svcNumber = (params[:order][:svc_number]).to_s.delete(' ').delete('.')
+    else
+      @svcNumber = ""
+    end
+
+    if @cardNumberParams != nil
+      @cardNumber = (params[:order][:card_number]).to_s.delete(' ').delete('.')
+    else
+      @cardNumber = ""
+    end
+
     if @preferredDeliveryDate > @currentDateTime
-      params[:order][:basket_id] = session[:basket_id]
-      @basket = Basket.find(session[:basket_id])
+      if @svcNumber.length == 3 && is_string_number?(@svcNumber)
+        # Never trust what credentials a User may enter in the form
+        # Make sure that the parameters are as we expect it to be
+        params[:order][:svc_number] = @svcNumber
+        if @cardNumber.length == 16 && is_string_number?(@cardNumber)
+          # Same logic applies here
+          params[:order][:card_number] = @cardNumber
 
-      totalPrice = 0
-      @basket.items.each do |item|
-        totalPrice += item.product.price
-      end
+          # Get basket id using the same session id and find basket record
+          params[:order][:basket_id] = session[:basket_id]
+          @basket = Basket.find(session[:basket_id])
 
-      params[:order][:orderTotal] = totalPrice
+          # This loop calculates the total price for all items in the basket
+          totalPrice = 0
+          @basket.items.each do |item|
+            totalPrice += item.product.price
+          end
 
-      @order = Order.new(order_params)
+          params[:order][:orderTotal] = totalPrice
 
-      respond_to do |format|
-        if @order.save
-          session[:basket_id] = nil
-          format.html { redirect_to @order, notice: 'Order was successfully created.' }
-          format.json { render :show, status: :created, location: @order }
+          @order = Order.new(order_params)
+
+          respond_to do |format|
+            if @order.save
+              session[:basket_id] = nil
+              format.html { redirect_to @order, notice: 'Order was successfully created.' }
+              format.json { render :show, status: :created, location: @order }
+            else
+              format.html { render :new, alert: 'Error in creating Order.' }
+              format.json { render json: @order.errors, status: :unprocessable_entity }
+            end
+          end
+
         else
-          format.html { render :new, alert: 'Error in creating Order.' }
-          format.json { render json: @order.errors, status: :unprocessable_entity }
+          redirect_to checkout_details_order_path
+          flash[:alert] = "Credit Number must contain 16 single-digit numbers."
         end
+
+      else
+        redirect_to checkout_details_order_path
+        flash[:alert] = "SVC Number must contain 3 single-digit numbers."
       end
     else
       redirect_to checkout_details_order_path

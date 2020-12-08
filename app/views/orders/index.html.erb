@@ -17,9 +17,10 @@
   </thead>
 
   <tbody>
+    <% if @orders != nil %>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.basket %></td>
+        <td><%= order.basket_id %></td>
         <td><%= order.card_number %></td>
         <td><%= order.svc_number %></td>
         <td><%= order.orderTotal %></td>
@@ -29,6 +30,7 @@
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
