@@ -6,9 +6,9 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
     @product = products(:one)
   end
 
-  test "should get index" do
+  test "should not get index" do
     get items_url
-    assert_response :success
+    assert_redirected_to root_path
   end
 
   test "should get new" do

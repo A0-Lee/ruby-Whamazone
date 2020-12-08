@@ -3,6 +3,7 @@ require 'test_helper'
 class BasketsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @basket = baskets(:one)
+    @customerInfo = customer_infos(:one)
   end
 
   test "should get index" do
@@ -18,7 +19,7 @@ class BasketsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create basket" do
     assert_difference('Basket.count') do
-      post baskets_url, params: { basket: { address: @basket.address, city: @basket.city, county: @basket.county, customerName: @basket.customerName, postcode: @basket.postcode, user_id: @basket.user_id } }
+      post baskets_url, params: { basket: { customer_info_id: @customerInfo } }
     end
 
     assert_redirected_to basket_url(Basket.last)
@@ -37,7 +38,7 @@ class BasketsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update basket" do
-    patch basket_url(@basket), params: { basket: { address: @basket.address, city: @basket.city, county: @basket.county, customerName: @basket.customerName, postcode: @basket.postcode, user_id: @basket.user_id } }
+    patch basket_url(@basket), params: { basket: { customer_info_id: @customerInfo } }
     assert_redirected_to root_path
   end
 

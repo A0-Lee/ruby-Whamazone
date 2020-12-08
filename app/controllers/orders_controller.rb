@@ -7,15 +7,15 @@ class OrdersController < ApplicationController
     if user_logged_in
       if CustomerInfo.exists?(user_id: session[:user_id])
         @customerInfo = CustomerInfo.find_by user_id: session[:user_id]
-        
+
         if Basket.exists?(customer_info_id: @customerInfo.id)
           # Find all relevant baskets to the user's linked customerInfo.id
           @baskets = Basket.where(customer_info_id: @customerInfo.id).order("created_at ASC")
-          # Check if at least one order is linked to the user's basket
-          if Order.exists?(basket_id: @baskets.last.id)
             # Append all the relevant orders into an array
-            @orders = Array.new
-            @baskets.each do |basket|
+          @orders = Array.new
+          @baskets.each do |basket|
+              # Check if basket has already been ordered
+            if Order.exists?(basket_id: basket.id)
               @orders.append(Order.find_by basket_id: basket.id)
             end
           end
@@ -45,10 +45,17 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    # We first create a DateTime object using our form parameters
-    @preferreddeliveryDateObject = DateTime.new(params[:order]["deliveryDate(1i)"].to_i, params[:order]["deliveryDate(2i)"].to_i, params[:order]["deliveryDate(3i)"].to_i, params[:order]["deliveryDate(4i)"].to_i, params[:order]["deliveryDate(5i)"].to_i)
-    # Then we convert our preferred Delivery Date using to_i() - where to_i() converts our Date Time object into seconds since the Unix epoch
-    @preferredDeliveryDate = @preferreddeliveryDateObject.to_i()
+    # We first create a DateTime object using our form parameters, assuming they are not nil
+    if params[:order]["deliveryDate(1i)"] != nil
+      @preferreddeliveryDateObject = DateTime.new(params[:order]["deliveryDate(1i)"].to_i, params[:order]["deliveryDate(2i)"].to_i, params[:order]["deliveryDate(3i)"].to_i, params[:order]["deliveryDate(4i)"].to_i, params[:order]["deliveryDate(5i)"].to_i)
+      # Then we convert our preferred Delivery Date using to_i() - where to_i() converts our Date Time object into seconds since the Unix epoch
+      @preferredDeliveryDate = @preferreddeliveryDateObject.to_i()
+    else
+      # This is for the order controller test, where using the form parameters is complicated
+      @preferredDeliveryDateObject = DateTime.current().next_day(10)
+      @preferredDeliveryDate = @preferredDeliveryDateObject.to_i()
+    end
+
     @currentDateTime = DateTime.current().to_i()
 
     # Ensure that we check the svc and card number are the correct lengths and that they are numbers
@@ -70,6 +77,8 @@ class OrdersController < ApplicationController
     end
 
     if @preferredDeliveryDate > @currentDateTime
+      params[:order][:deliveryDate] = @preferredDeliveryDate
+
       if @svcNumber.length == 3 && is_string_number?(@svcNumber)
         # Never trust what credentials a User may enter in the form
         # Make sure that the parameters are as we expect it to be
@@ -79,16 +88,18 @@ class OrdersController < ApplicationController
           params[:order][:card_number] = @cardNumber
 
           # Get basket id using the same session id and find basket record
-          params[:order][:basket_id] = session[:basket_id]
-          @basket = Basket.find(session[:basket_id])
+          if basket_in_session
+            params[:order][:basket_id] = session[:basket_id]
+            @basket = Basket.find(session[:basket_id])
 
-          # This loop calculates the total price for all items in the basket
-          totalPrice = 0
-          @basket.items.each do |item|
-            totalPrice += item.product.price
+            # This loop calculates the total price for all items in the basket
+            totalPrice = 0
+            @basket.items.each do |item|
+              totalPrice += item.product.price
+            end
+
+            params[:order][:orderTotal] = totalPrice
           end
-
-          params[:order][:orderTotal] = totalPrice
 
           @order = Order.new(order_params)
 
@@ -98,6 +109,7 @@ class OrdersController < ApplicationController
               format.html { redirect_to @order, notice: 'Order was successfully created.' }
               format.json { render :show, status: :created, location: @order }
             else
+              puts @order.errors.full_messages
               format.html { render :new, alert: 'Error in creating Order.' }
               format.json { render json: @order.errors, status: :unprocessable_entity }
             end
@@ -151,6 +163,6 @@ class OrdersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def order_params
       # Since we aren't using a real payment system, there's no need to verify real credentials
-      params.require(:order).permit(:basket_id, :card_number, :svc_number, :telephone, :message, :orderTotal, :orderDate, :deliveryDate)
+      params.require(:order).permit(:basket_id, :card_number, :svc_number, :telephone, :message, :orderTotal, :deliveryDate)
     end
 end

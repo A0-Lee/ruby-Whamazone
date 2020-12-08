@@ -3,7 +3,7 @@
 <hr>
 <br>
 <div class="container">
-  <% @products.each do |product| %>
+  <% @products.sort_by(&:name).each do |product| %>
     <div class="row">
       <div class="col-sm-4" align="center">
         <% if product.has_badge %>

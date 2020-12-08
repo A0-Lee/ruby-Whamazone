@@ -1,6 +1,7 @@
 <%# Only logged in users should be able to use this route %>
   <%# If logged out users try to access this page, they will be redirected to root_path (defined in users_controller) %>
     <% if user_logged_in %>
+      <br>
       <h1><%=t('.account_title')%></h1>
       <hr>
       <p>
@@ -8,17 +9,18 @@
           <i><%=t('.account_desc')%></i>
         </b>
       </p>
-      <p><%=t('.account_username')%>
+      <p><b><%=t('.account_username')%></b>
         <%= session_user.username %></p>
-      <p><%=t('.account_name')%>
+      <p><b><%=t('.account_name')%></b>
         <%= session_user.name %></p>
-      <p><%=t('.account_email')%>
+      <p><b><%=t('.account_email')%></b>
         <%= session_user.email %></p>
-      <p><%=t('.account_password')%>
+        <%# Please note that showing the password is to demonstrate the encryption method of bcrypt %>
+      <p><b><%=t('.account_password')%></b>
         <%= session_user.password_digest %></p>
-      <p><%=t('.account_created_at')%>
+      <p><b><%=t('.account_created_at')%></b>
         <%= session_user.created_at %></p>
-      <p><%=t('.account_updated_at')%>
+      <p><b><%=t('.account_updated_at')%></b>
         <%= session_user.updated_at %></p>
       <a href="<%= user_edit_path %>" class="btn btn-primary"><%=t('.account_edit_button')%></a>
     <% end %>

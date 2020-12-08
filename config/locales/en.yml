@@ -65,6 +65,15 @@ en:
 
 
   orders:
+    index:
+      index_title: "Your Orders"
+      index_orderID_column: "Order ID:"
+      index_cardNumber_column: "Card Number:"
+      index_svcNumber_column: "SVC Number:"
+      index_totalCost_column: "Total Cost:"
+      index_deliveryDate_columnn: "Chosen Delivery Date:"
+      index_currency: "£"
+
     show:
       show_title: "Your Order Information"
       show_basketID_display: "Basket ID:"

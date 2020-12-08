@@ -5,9 +5,9 @@ class CustomerInfosControllerTest < ActionDispatch::IntegrationTest
     @customer_info = customer_infos(:one)
   end
 
-  test "should get index" do
+  test "should not get index" do
     get customer_infos_url
-    assert_response :success
+    assert_redirected_to root_path
   end
 
   test "should get new" do

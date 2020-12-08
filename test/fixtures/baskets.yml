@@ -2,16 +2,6 @@
 
 one:
   customer_info_id: 1
-  customerName: MyString
-  address: MyString
-  city: MyString
-  county: MyString
-  postcode: MyString
 
 two:
   customer_info_id: 2
-  customerName: MyString
-  address: MyString
-  city: MyString
-  county: MyString
-  postcode: MyString
