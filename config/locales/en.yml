@@ -67,7 +67,7 @@ en:
   orders:
     index:
       index_title: "Your Orders"
-      index_orderID_column: "Order ID:"
+      index_orderID_column: "Order ID #:"
       index_cardNumber_column: "Card Number:"
       index_svcNumber_column: "SVC Number:"
       index_totalCost_column: "Total Cost:"
@@ -77,13 +77,15 @@ en:
     show:
       show_title: "Your Order Information"
       show_basketID_display: "Basket ID:"
-      show_orderID_display: "Your Order-Reference ID:"
+      show_orderID_display: "Your Order-Reference ID #:"
       show_cardNumber_display: "Card Number:"
       show_svcNumber_display: "SVC Number:"
       show_orderTotal_display: "Total Charged:"
       show_message_display: "Message (if any):"
       show_deliveryDate_display: "Preferred Delivery Date"
       show_currency: "£"
+      show_itemsOrdered_display: "Items Ordered:"
+      show_totalItems_display: "Total Items:"
 
     new:
       new_title: "Checkout Basket"

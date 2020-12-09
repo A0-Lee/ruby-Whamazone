@@ -48,6 +48,24 @@ class CustomerInfosController < ApplicationController
 
   # GET /customer_infos/1/edit
   def edit
+    if user_logged_in
+      @user = User.find(session[:user_id])
+
+      if CustomerInfo.exists?(user_id: session[:user_id])
+        @userCustomerInfo = CustomerInfo.find_by user_id: session[:user_id]
+        # Check if current CustomerInfo record matches user's CustomerInfo
+        if !(@customer_info.id == @userCustomerInfo.id)
+          flash[:alert] = "Customer Info record does not match User id."
+          redirect_to root_path
+        end
+      else
+        flash[:alert] = "Create a new Customer Info during checkout."
+        redirect_to root_path
+      end
+    else
+      flash[:alert] = "You do not have permission to view this."
+      redirect_to root_path
+    end
   end
 
   # POST /customer_infos
@@ -104,7 +122,12 @@ class CustomerInfosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer_info
-      @customer_info = CustomerInfo.find(params[:id])
+      if CustomerInfo.exists?(params[:id])
+        @customer_info = CustomerInfo.find(params[:id])
+      else
+        flash[:alert] = "This CustomerInfo does not exist."
+        redirect_to root_path
+      end
     end
 
     # Only allow a list of trusted parameters through.

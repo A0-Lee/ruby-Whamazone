@@ -41,5 +41,14 @@
   <%= @order.deliveryDate %>
 </p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
+<hr>
+<p><strong><%= t('.show_itemsOrdered_display') %></strong></p>
+<ul>
+<% @matchingBasket.items.each do |item| %>
+<li><%= item.product.name %> - <%= t('.show_currency') %><%= item.product.price %></li>
+<% end%>
+</ul>
+
+<p><strong><%= t('.show_totalItems_display') %></strong> <%= @matchingBasket.items.count %></p>
+
 <%= link_to 'Back', orders_path %>

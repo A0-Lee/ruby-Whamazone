@@ -43,6 +43,7 @@ class OrdersController < ApplicationController
           @userBaskets.each do |basket|
             if @order.basket_id == basket.id
               @orderRecordMatches = true
+              @matchingBasket = Basket.find(basket.id)
             end
           end
 
@@ -124,25 +125,33 @@ class OrdersController < ApplicationController
             @basket = Basket.find(session[:basket_id])
 
             # This loop calculates the total price for all items in the basket
+            # It also check how many items are in the basket
             totalPrice = 0
+            itemCount = 0
             @basket.items.each do |item|
               totalPrice += item.product.price
+              itemCount += 1
             end
 
             params[:order][:orderTotal] = totalPrice
-          end
 
-          @order = Order.new(order_params)
-
-          respond_to do |format|
-            if @order.save
-              session[:basket_id] = nil
-              format.html { redirect_to @order, notice: 'Order was successfully created.' }
-              format.json { render :show, status: :created, location: @order }
+            if itemCount == 0
+              flash[:alert] = "You need at least 1 item in your Basket to checkout."
+              redirect_to root_path
             else
-              puts @order.errors.full_messages
-              format.html { render :new, alert: 'Error in creating Order.' }
-              format.json { render json: @order.errors, status: :unprocessable_entity }
+              @order = Order.new(order_params)
+
+              respond_to do |format|
+                if @order.save
+                  session[:basket_id] = nil
+                  format.html { redirect_to @order, notice: 'Order was successfully created.' }
+                  format.json { render :show, status: :created, location: @order }
+                else
+                  puts @order.errors.full_messages
+                  format.html { render :new, alert: 'Error in creating Order.' }
+                  format.json { render json: @order.errors, status: :unprocessable_entity }
+                end
+              end
             end
           end
 

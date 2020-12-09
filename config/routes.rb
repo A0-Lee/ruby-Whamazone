@@ -26,11 +26,11 @@ Rails.application.routes.draw do
   # Get all the appropriate CRUD paths/routes for our resources
   resources :users, only: [:create, :edit, :update, :signup, :account]
   resources :sessions, only: [:create, :login, :destroy]
-  resources :products
-  resources :baskets
-  resources :items
-  resources :orders
-  resources :customer_infos
+  resources :products, only: [:index, :show]
+  resources :baskets, only: [:index, :show, :new, :create]
+  resources :items, only: [:index, :create, :remove_item]
+  resources :orders, only: [:index, :show, :new, :create]
+  resources :customer_infos, only: [:index, :show, :new, :edit, :create, :update]
 
   # This is the first page the user will first load into as it is the root page
   root 'main#home'
