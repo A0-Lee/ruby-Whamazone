@@ -23,14 +23,14 @@ class CustomerInfosControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to customer_info_url(CustomerInfo.last)
   end
 
-  test "should show customer_info" do
+  test "should not show customer_info" do
     get customer_info_url(@customer_info)
-    assert_response :success
+    assert_redirected_to root_path
   end
 
-  test "should get edit" do
+  test "should not get edit" do
     get edit_customer_info_url(@customer_info)
-    assert_response :success
+    assert_redirected_to root_path
   end
 
   test "should update customer_info" do
@@ -38,11 +38,4 @@ class CustomerInfosControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to customer_info_url(@customer_info)
   end
 
-  test "should destroy customer_info" do
-    assert_difference('CustomerInfo.count', -1) do
-      delete customer_info_url(@customer_info)
-    end
-
-    assert_redirected_to customer_infos_url
-  end
 end

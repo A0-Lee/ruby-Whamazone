@@ -121,6 +121,7 @@ class OrdersController < ApplicationController
 
           # Get basket id using the same session id and find basket record
           if basket_in_session
+
             params[:order][:basket_id] = session[:basket_id]
             @basket = Basket.find(session[:basket_id])
 
@@ -153,6 +154,10 @@ class OrdersController < ApplicationController
                 end
               end
             end
+
+          else
+            flash[:alert] = "Could not find Basket in session."
+            redirect_to root_path
           end
 
         else

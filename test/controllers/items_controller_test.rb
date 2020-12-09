@@ -11,10 +11,6 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_path
   end
 
-  test "should get new" do
-    get new_item_url
-    assert_response :success
-  end
 
   test "should create item" do
     assert_difference('Item.count') do
@@ -25,26 +21,4 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to basket_url(Basket.last)
   end
 
-  test "should show item" do
-    get item_url(@item)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_item_url(@item)
-    assert_response :success
-  end
-
-  test "should update item" do
-    patch item_url(@item), params: { item: { basket_id: @item.basket_id, product_id: @item.product_id } }
-    assert_response :success
-  end
-
-  test "should destroy item" do
-    assert_difference('Item.count', -1) do
-      delete item_url(@item)
-    end
-
-    assert_redirected_to items_url
-  end
 end
