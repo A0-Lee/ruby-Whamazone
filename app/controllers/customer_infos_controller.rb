@@ -15,6 +15,24 @@ class CustomerInfosController < ApplicationController
   # GET /customer_infos/1
   # GET /customer_infos/1.json
   def show
+    if user_logged_in
+      @user = User.find(session[:user_id])
+
+      if CustomerInfo.exists?(user_id: session[:user_id])
+        @userCustomerInfo = CustomerInfo.find_by user_id: session[:user_id]
+        # Check if current CustomerInfo record matches user's CustomerInfo
+        if !(@customer_info.id == @userCustomerInfo.id)
+          flash[:alert] = "Customer Info record does not match User id."
+          redirect_to root_path
+        end
+      else
+        flash[:alert] = "Create a new Customer Info during checkout."
+        redirect_to root_path
+      end
+    else
+      flash[:alert] = "You do not have permission to view this."
+      redirect_to root_path
+    end
   end
 
   # GET /customer_infos/new

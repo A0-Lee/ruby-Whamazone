@@ -31,6 +31,37 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    if user_logged_in
+      if CustomerInfo.exists?(user_id: session[:user_id])
+        @userCustomerInfo = CustomerInfo.find_by user_id: session[:user_id]
+
+        if Basket.exists?(customer_info_id: @userCustomerInfo)
+          @userBaskets = Basket.where(customer_info_id: @userCustomerInfo.id).order("created_at ASC")
+
+          @orderRecordMatches = false
+          @userOrders = Array.new
+          @userBaskets.each do |basket|
+            if @order.basket_id == basket.id
+              @orderRecordMatches = true
+            end
+          end
+
+          if !(@orderRecordMatches)
+            flash[:alert] = "This Order does not belong to you."
+            redirect_to root_path
+          end
+        else
+          flash[:alert] = "No existing baskets."
+          redirect_to root_path
+        end
+      else
+        flash[:alert] = "Create a CustomerInfo during checkout to see your orders."
+        redirect_to root_path
+      end
+    else
+      flash[:alert] = "Sign into your account to see your orders."
+      redirect_to root_path
+    end
   end
 
   # GET /orders/new
@@ -157,7 +188,12 @@ class OrdersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
-      @order = Order.find(params[:id])
+      if Order.exists?(params[:id])
+        @order = Order.find(params[:id])
+      else
+        flash[:alert] = "This Order does not exist."
+        redirect_to root_path
+      end
     end
 
     # Only allow a list of trusted parameters through.

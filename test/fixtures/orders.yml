@@ -1,7 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  basket_id: 1
+  # This connects to the basket.yml fixtures in column one
+  basket: one
   card_number: 1234123412341234
   svc_number: 123
   orderTotal: 9.99
@@ -9,7 +10,7 @@ one:
   deliveryDate: 2030-12-07 23:47:00
 
 two:
-  basket_id: 1
+  basket: two
   card_number: MyString
   svc_number: MyString
   orderTotal: 9.99

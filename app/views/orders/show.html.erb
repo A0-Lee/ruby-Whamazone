@@ -16,7 +16,8 @@
 
 <p>
   <strong><%=t('.show_cardNumber_display')%></strong>
-  <%= '*' * (@order.card_number).length %>
+  <%# This displays only the last 4 card numbers and the rest are asterisks %>
+  <%= '*' * ((@order.card_number.length) - 4) + @order.card_number.last(4) %>
 </p>
 
 <p>

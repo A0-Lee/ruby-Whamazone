@@ -35,7 +35,7 @@ en:
   customer_infos:
     show:
       show_title: "Your Order Details"
-      show_account_row: "User Account (if any):"
+      show_account_row: "User Account:"
       show_name_row: "Full Name:"
       show_telephone_row: "Telephone:"
       show_address_row: "Address:"

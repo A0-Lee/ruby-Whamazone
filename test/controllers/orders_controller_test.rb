@@ -25,11 +25,7 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show order" do
-    # We have to create a new Order record using this method, as fixtures don't allow associations with different existing records
-    # In this case, we need an existing Basket record to create our Order record (as an Order cannot be created without a Basket id that belongs to an existing Basket record)
-    @newOrder = Order.create(basket_id: @basket.id, card_number: 1234123412341234, svc_number: 123, deliveryDate: Time.current())
-    # Otherwise it will give us a nil id if we used the @order variable fixture, for the reasons above
-    get order_url(@newOrder)
+    get order_url(@order)
     assert_response :success
   end
 
@@ -39,7 +35,7 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update order" do
-    patch order_url(@order), params: { order: { basket_id: @order.basket_id, card_number: @order.card_number, deliveryDate: @order.deliveryDate, message: @order.message, svc_number: @order.svc_number, orderTotal: @order.orderTotal } }
+    patch order_url(@order), params: { order: { basket_id: @order.basket, card_number: @order.card_number, deliveryDate: @order.deliveryDate, message: @order.message, svc_number: @order.svc_number, orderTotal: @order.orderTotal } }
     assert_response :success
   end
 
