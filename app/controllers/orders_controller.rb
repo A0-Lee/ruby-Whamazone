@@ -137,7 +137,7 @@ class OrdersController < ApplicationController
             params[:order][:orderTotal] = totalPrice
 
             if itemCount == 0
-              flash[:alert] = "You need at least 1 item in your Basket to checkout."
+              flash[:alert] = "You need to have at least 1 item in your Basket to checkout."
               redirect_to root_path
             else
               @order = Order.new(order_params)

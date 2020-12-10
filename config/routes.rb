@@ -26,7 +26,13 @@ Rails.application.routes.draw do
   # Get all the appropriate CRUD paths/routes for our resources
   resources :users, only: [:create, :edit, :update, :signup, :account]
   resources :sessions, only: [:create, :login, :destroy]
-  resources :products, only: [:index, :show]
+  # User Reviews should be nested to products (as reviews should be displayed on products)
+  resources :products, only: [:index, :show] do
+    resources :reviews
+  end
+
+  resources :reviews, only: [:index, :show, :edit, :destroy, :create]
+
   resources :baskets, only: [:index, :show, :new, :create]
   resources :items, only: [:index, :create, :remove_item]
   resources :orders, only: [:index, :show, :new, :create]

@@ -1,0 +1,40 @@
+<hr>
+<% @reviews = Review.where(product_id: @product.id) %>
+
+<div class="container">
+  <% @reviews.sort_by(&:created_at).each do |review| %>
+
+  <div class="row comment-left-border">
+    <div class="col-sm-4" align="left">
+      <p><strong><%= review.user.username %></strong> <i>says:</i></p>
+    </div>
+  </div>
+
+  <div class="row comment-left-border">
+    <div class="col-sm-2" align="left">
+      <div class="rating-review-stars" style="--rating: <%= review.rating %>;" title=""></div>
+    </div>
+
+    <div class="col-sm-4" align="left">
+      <p><strong><%= review.title %></strong></p>
+    </div>
+
+  </div>
+
+  <div class="row comment-left-border">
+    <div class="col-sm-4" align="left">
+        <p><strong>Reviewed on:</strong> <%= review.created_at %></p>
+    </div>
+  </div>
+
+  <div class="row comment-left-border">
+    <div class="col-sm-8" align="left">
+      <p><%= review.comment %></p>
+    </div>
+  </div>
+
+  <hr>
+  <% end %>
+</div>
+
+<br>

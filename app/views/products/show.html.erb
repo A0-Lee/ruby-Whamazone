@@ -12,7 +12,12 @@
           <%= render 'shared/badgenew' %>
         <% end %>
       </h1>
-      <%= render 'shared/reviewstars' %>
+      <% if Review.exists?(product_id: @product.id) %>
+      <% @averageRating = Review.where(product_id: @product.id).average(:rating) %>
+      <% else %>
+      <% @averageRating = 0 %>
+      <% end %>
+      <div class="rating-review-stars" style="--rating: <%= @averageRating %>;" title="<%=t('.show_reviewstars_title1')%> <%= @averageRating %> <%=t('.show_reviewstars_title2')%>"></div>
       <br>
       <% if @product.has_badge %>
         <%= render 'shared/badgechoice' %>
@@ -39,3 +44,9 @@
     </div>
   </div>
 </div>
+
+<hr>
+
+<%= button_to 'Write a Review', new_product_review_path(product_id: @product), method: :get, class: "btn btn-primary" %>
+
+<%= render 'reviews/index' %>

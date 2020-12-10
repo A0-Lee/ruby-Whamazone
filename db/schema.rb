@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_06_170402) do
+ActiveRecord::Schema.define(version: 2020_12_09_234411) do
 
   create_table "baskets", force: :cascade do |t|
     t.integer "customer_info_id"
@@ -65,6 +65,18 @@ ActiveRecord::Schema.define(version: 2020_12_06_170402) do
     t.boolean "is_new"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "user_id"
+    t.string "title"
+    t.text "comment"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_reviews_on_product_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

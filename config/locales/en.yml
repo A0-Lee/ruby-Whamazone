@@ -32,6 +32,14 @@
 # Any titles/heading of english text presented on the view is written and referred here!
 # This makes it more modular and clear!
 en:
+  reviews:
+    index:
+      index_title: "Your Reviews"
+      index_productID_column: "Product ID:"
+      index_reviewTitle_column: "Review Title:"
+      index_rating_column: "Rating:"
+      index_createAt_column: "Created At:"
+
   customer_infos:
     show:
       show_title: "Your Order Details"
@@ -144,9 +152,6 @@ en:
 
 
   shared:
-    reviewstars:
-      reviewstars_title: "Average rating of this product is 2.5 out of 5."
-
     badgenew:
       badge_title: "New"
 
@@ -159,6 +164,7 @@ en:
       header_account: "Account"
       header_login: "Login"
       header_logout: "Logout"
+      header_review: "My Reviews"
       header_order: "My Orders"
       header_search_button: "Search"
 
@@ -181,6 +187,8 @@ en:
       show_quantityinstock: "In Stock:"
       show_currency: "£"
       show_add_to_basket: "Add to Basket"
+      show_reviewstars_title1: "Average rating of this product is"
+      show_reviewstars_title2: "out of 5."
 
     index:
       index_title: "All Whamazone Products"
@@ -188,6 +196,8 @@ en:
       index_category_label: "Category: "
       index_price_sign: "£"
       index_buy_button: "Buy"
+      index_reviewstars_title1: "Average rating of this product is"
+      index_reviewstars_title2: "out of 5."
 
 
 

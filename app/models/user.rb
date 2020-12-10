@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_secure_password
   # A user can only have one customer record
   has_one :customer_info
+  has_many :reviews
   #validates_uniqueness_of :username, :email
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true

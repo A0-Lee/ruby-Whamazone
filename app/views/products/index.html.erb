@@ -17,7 +17,12 @@
             <%= render 'shared/badgenew' %>
           <% end %>
         </h2>
-        <%= render 'shared/reviewstars' %>
+        <% if Review.exists?(product_id: product.id) %>
+        <% @averageRating = Review.where(product_id: product.id).average(:rating) %>
+        <% else %>
+        <% @averageRating = 0 %>
+        <% end %>
+        <div class="rating-review-stars" style="--rating: <%= @averageRating %>;" title="<%=t('.index_reviewstars_title1')%> <%= @averageRating %> <%=t('.index_reviewstars_title2')%>"></div>
         <p><%=t('.index_category_label')%>
           <i><%= product.category %></i>
         </p>

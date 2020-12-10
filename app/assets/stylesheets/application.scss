@@ -19,6 +19,10 @@ $white-color: #FFFFFF;
   color: $white-color;
 }
 
+.comment-left-border {
+  border-left: 6px solid #ccc !important;
+}
+
 .brand-color {
   color: $brand-color;
 }

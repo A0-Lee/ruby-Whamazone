@@ -1,0 +1,84 @@
+<%= render 'shared/flashmessage' %>
+
+<br>
+<h1><%=t('.index_title')%></h1>
+<hr>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2" align="center">
+      <span>
+        <b><%=t('.index_productID_column')%></b>
+      </span>
+    </div>
+
+    <div class="col-sm-3" align="center">
+      <span>
+        <b><%=t('.index_reviewTitle_column')%></b>
+      </span>
+    </div>
+
+    <div class="col-sm-1" align="center">
+      <span>
+        <b><%=t('.index_rating_column')%></b>
+      </span>
+    </div>
+
+    <div class="col-sm-2" align="center">
+      <span>
+        <b><%=t('.index_createAt_column')%></b>
+      </span>
+    </div>
+
+    <div class="col-sm-1" align="center">
+    </div>
+
+    <div class="col-sm-1" align="center">
+    </div>
+
+    <div class="col-sm-1" align="center">
+    </div>
+
+
+
+  </div>
+  <hr>
+
+  <% if @reviews != nil %>
+    <% @reviews.each do |review| %>
+      <div class="row">
+
+        <div class="col-sm-2" align="center">
+          <%= review.product.id %>
+        </div>
+
+        <div class="col-sm-3" align="center">
+          <%= review.title %>
+        </div>
+
+        <div class="col-sm-1" align="center">
+          <%= review.rating %>
+        </div>
+
+        <div class="col-sm-2" align="center">
+          <%= review.created_at %>
+        </div>
+
+        <div class="col-sm-1" align="center">
+          <%= link_to 'Show', review %>
+        </div>
+
+        <div class="col-sm-1" align="center">
+          <%= link_to 'Edit', edit_review_path(review) %>
+        </div>
+
+        <div class="col-sm-1" align="center">
+          <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+
+      </div>
+      <br>
+    <% end %>
+  <% end %>
+
+</div>
