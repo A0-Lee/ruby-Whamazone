@@ -39,12 +39,10 @@
     <div class="col-sm-1" align="center">
     </div>
 
-
-
   </div>
   <hr>
 
-  <% if @reviews != nil %>
+  <% if @reviews != nil && @reviews.count > 0 %>
     <% @reviews.each do |review| %>
       <div class="row">
 
@@ -79,6 +77,12 @@
       </div>
       <br>
     <% end %>
+    <hr>
+    <%= link_to t('.index_linkto_message1'), products_path %>
+    <br>
+    <br>
+  <% else %>
+  <%= link_to t('.index_linkto_message2'), products_path %>
   <% end %>
 
 </div>

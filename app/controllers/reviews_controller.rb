@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
-  before_action :set_product, only: [:new]
 
   # GET /reviews
   # GET /reviews.json
@@ -8,6 +7,11 @@ class ReviewsController < ApplicationController
     if user_logged_in
       #@reviews = Review.all
       @reviews = Review.where(user_id: session[:user_id]).order("created_at ASC")
+
+      if session[:user_id] == 0
+        @reviews = Review.all
+      end
+
     else
       flash[:alert] = "Login to your account to see your reviews."
       redirect_to root_path
@@ -17,13 +21,19 @@ class ReviewsController < ApplicationController
   # GET /reviews/1
   # GET /reviews/1.json
   def show
+    if user_logged_in
+    else
+      flash[:alert] = "You do not have permission to view this."
+      redirect_to root_path
+    end
   end
 
   # GET /reviews/new
   def new
     if user_logged_in
       # Make sure that a User can only have one Review per Product
-      if Review.exists?(product_id: session[:product_id], user_id: session[:user_id])
+      @product = Product.find(params[:product_id])
+      if Review.exists?(product_id: @product.id, user_id: session[:user_id])
         flash[:alert] = "You've already made a review of Product ID " + @product.id.inspect + "."
         redirect_to reviews_path
       else
@@ -37,24 +47,41 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1/edit
   def edit
+    if user_logged_in
+      @currentReview = Review.find(params[:id])
+
+      if !(@currentReview.user_id == session[:user_id])
+        flash[:alert] = "This review does not belong to you."
+        redirect_to reviews_path
+      end
+
+    else
+      flash[:alert] = "You need to be logged in to edit a review."
+      redirect_to root_path
+    end
   end
 
   # POST /reviews
   # POST /reviews.json
   def create
-    @product = Product.find(session[:product_id])
-    params[:review][:product_id] = session[:product_id]
-    session[:product_id] = nil
+    @product = Product.find(params[:review][:product_id])
     params[:review][:user_id] = session[:user_id]
-    @review = Review.new(review_params)
 
-    respond_to do |format|
-      if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
-        format.json { render :show, status: :created, location: @review }
-      else
-        format.html { render :new }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
+    # The additional check if the User purposefully tries to change the hidden field product_id value in the form creation
+    if Review.exists?(product_id: @product.id, user_id: session[:user_id])
+      flash[:alert] = "You've already made a review of Product ID " + @product.id.inspect + "."
+      redirect_to reviews_path
+    else
+      @review = Review.new(review_params)
+
+      respond_to do |format|
+        if @review.save
+          format.html { redirect_to @product, notice: 'Review was successfully created.' }
+          format.json { render :show, status: :created, location: @review }
+        else
+          format.html { render :new }
+          format.json { render json: @review.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -62,9 +89,14 @@ class ReviewsController < ApplicationController
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
+    @review = Review.find(params[:id])
+    @product = Product.find(@review.product_id)
+
+    params[:review][:product_id] = @product.id
+
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
+        format.html { redirect_to reviews_path, notice: 'Review was successfully updated.' }
         format.json { render :show, status: :ok, location: @review }
       else
         format.html { render :edit }
@@ -88,13 +120,6 @@ class ReviewsController < ApplicationController
     def set_review
       if params[:id] != nil && Review.exists?(params[:id])
         @review = Review.find(params[:id])
-      end
-    end
-
-    def set_product
-      if params[:product_id] != nil && Product.exists?(params[:product_id])
-        @product = Product.find(params[:product_id])
-        session[:product_id] = @product.id
       end
     end
 

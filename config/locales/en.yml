@@ -33,12 +33,31 @@
 # This makes it more modular and clear!
 en:
   reviews:
+    edit:
+      edit_title: "Edit your Product Review"
+
+    new:
+      new_title: "Write a Product Review"
+
+    form:
+      form_title_label: "Review Title:"
+      form_title_title: "Enter your Review Title"
+      form_comment_label: "Comment:"
+      form_comment_title: "Write your Product Review"
+      form_comment_placeholder: "What do you think of this Product?"
+      form_rating_label: "Rating (from 1 to 5):"
+
+
     index:
       index_title: "Your Reviews"
       index_productID_column: "Product ID:"
       index_reviewTitle_column: "Review Title:"
       index_rating_column: "Rating:"
       index_createAt_column: "Created At:"
+      index_reviewstars_title1: "This user rated this product"
+      index_reviewstars_title2: "out of 5."
+      index_linkto_message1: "Got more reviews? We'd love to hear more!"
+      index_linkto_message2: "Got a Product you like? Why not write a review!"
 
   customer_infos:
     show:
@@ -81,6 +100,8 @@ en:
       index_totalCost_column: "Total Cost:"
       index_deliveryDate_columnn: "Chosen Delivery Date:"
       index_currency: "£"
+      index_linkto_message1: "Shop more with Whamazone!"
+      index_linkto_message2: "No Orders? Start shopping with Whamazone!"
 
     show:
       show_title: "Your Order Information"

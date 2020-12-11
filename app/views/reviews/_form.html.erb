@@ -1,4 +1,5 @@
-<%= form_with(model: Review.new, local: true) do |form| %>
+<div class="center-content-review">
+<%= form_with(model: review, local: true) do |form| %>
   <% if review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
@@ -12,21 +13,32 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, :required => true %>
+    <%# A User can perform an ugly hack, where they can change the hidden product_id value to any value they desire %>
+    <%# This is bad because a User should only be able to write one review once per product %>
+    <%# Additional checks are added in the reviews controller %>
+    <%= hidden_field(:review, :product_id, :value => params[:product_id]) %>
   </div>
 
   <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_area :comment, :required => true %>
+    <%= form.label :title, t(".form_title_label") %><br>
+    <%= form.text_field :title, title: t(".form_title_title"), size: 30, :required => true %>
   </div>
 
+  <br>
   <div class="field">
-    <%= form.label :rating %>
-    <%= form.number_field :rating, min: 1, max: 5, :required => true %>
+    <%= form.label :comment, t(".form_comment_label") %><br>
+    <%= form.text_area :comment, title: t(".form_comment_title"), placeholder: t(".form_comment_placeholder"), size: "30x5", :required => true %>
   </div>
 
+  <br>
+  <div class="field">
+    <%= form.label :rating, t(".form_rating_label") %><br>
+    <%= form.number_field :rating, min: 1, max: 5, size: 2, :required => true %>
+  </div>
+
+  <br>
   <div class="actions">
     <%= form.submit%>
   </div>
 <% end %>
+</div>
