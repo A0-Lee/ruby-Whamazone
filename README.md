@@ -41,6 +41,8 @@ Any documentation and concerns or issues related to the project are addressed he
 
 I also used [Ruby Version Manager (RVM)](https://rvm.io) to handle and install any ruby gem packages as well as Ruby and Rails for this project.
 
+This Project is hosted on a [Private Repository](https://gitlab.eps.surrey.ac.uk/al00952/com2025-coursework) using GitLab.
+
 
 Set-up Instructions:
 -----------------------------------------
@@ -84,6 +86,7 @@ Tables:
 - Item (Products added to the User's Basket are called Items)
 - CustomerInfo
 - Order
+- Review
 
 To ensure that the website is populated with products and users, you can run the command "rake db:seed" in the terminal which will execute the SQL commands in the seeds.rb file. However, all intended records to be used for this project should be ready by default.
 
@@ -97,6 +100,8 @@ If you wish to view all the existing records in their respective table at any po
 Copyright Disclaimer:
 -----------------------------------------
 Any third-party images, audio clips, or assets used during this project is within the Public Domain. This means items such as images are free to use even for commercial purposes. Assets can include any design aspects of the web pages from ruby gems, to fonts, to product images etc.
+
+Direct assets that are borrowed and used for this project are credited where appropriate.
 
 These will primarily affect the View aspect of the Model-View-Controller template.
 

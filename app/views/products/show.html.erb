@@ -47,6 +47,6 @@
 
 <hr>
 
-<%= button_to 'Write a Review', new_product_review_path(product_id: @product), method: :get, class: "btn btn-primary" %>
+<%= button_to 'Write a Review', new_product_review_path(product_id: @product.id), method: :get, class: "btn btn-primary" %>
 
 <%= render 'reviews/index' %>

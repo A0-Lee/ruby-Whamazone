@@ -10,10 +10,11 @@ Product.destroy_all
 User.destroy_all
 Item.destroy_all
 Basket.destroy_all
+Review.destroy_all
 
 Product.create([{
   name: 'Toilet Roll',
-  description: '200 sheet, 2ply, economic 36 pack, for an action packed lockdown!',
+  description: '200 sheet, 2ply, economic 1 roll, for an action packed lockdown!',
   category: 'Toiletries',
   image_url: 'toiletroll.jpeg',
   price: '9.99',
@@ -33,7 +34,7 @@ Product.create([{
 },
 {
   name: 'Big Water Bottle',
-  description: '10L Water Botle, filtered through 22 layers of volcanic rock! (Yes including the bottle).',
+  description: '10L Water Bottle with Mineral Water, filtered through 22 layers of volcanic rock! (Yes including the bottle).',
   category: 'Food & Drinks',
   image_url: 'bigwaterbottle.jpeg',
   price: '1.99',
@@ -81,16 +82,16 @@ User.create([{
   password_confirmation: 'WHAM'
 },
 {
-  name: 'Tester',
-  username: 'Test',
-  email: 'test@mail.com',
-  password: 'test',
-  password_confirmation: 'test'
+  username: 'john',
+  name: 'john s',
+  email: 'mynameisjohn@mail.com',
+  password: 'john',
+  password_confirmation: 'john'
 },
 {
-  username: 'brad112',
+  username: 'Bradinator',
   name: 'Brad W',
-  email: 'mynameisbrad@mail.com',
+  email: 'coolbrad@mail.com',
   password: 'bradisrad',
   password_confirmation: 'bradisrad'
 },
@@ -100,7 +101,79 @@ User.create([{
   email: 'KT115@mail.com',
   password: 'mysupersecretpassword',
   password_confirmation: 'mysupersecretpassword'
+},
+{
+  name: 'Tester',
+  username: 'Test',
+  email: 'test@mail.com',
+  password: 'test',
+  password_confirmation: 'test'
+}])
+
+Review.create([{
+  product_id: 1,
+  user_id: 1,
+  title: 'THIS IS QUALITY',
+  comment: 'DOES GREAT JOB!!!!!',
+  rating: 5
+},
+{
+  product_id: 1,
+  user_id: 2,
+  title: 'I can roll with this',
+  comment: 'Quality product, does what it needs to do.',
+  rating: 5
+},
+{
+  product_id: 1,
+  user_id: 3,
+  title: 'Surprisingly good quality!',
+  comment: 'Bought this because it was out of stock everywhere. Better than I expected!',
+  rating: 5
+},
+{
+  product_id: 3,
+  user_id: 1,
+  title: 'THIS WATER BOTTLE IS SO BIG!!!!',
+  comment: 'CAN HOLD SO MUCH WATER!!!',
+  rating: 5
+},
+{
+  product_id: 3,
+  user_id: 2,
+  title: 'Destroyed a bear with this',
+  comment: 'I was out doing my usual jogs in the forest when I suddenly got ambushed by a grizzly bear. I threw the bottle at it which made it slip down the hill, never felt so cool after that encounter.',
+  rating: 5
+},
+{
+  product_id: 3,
+  user_id: 3,
+  title: 'Big, cheap, and durable!',
+  comment: 'Bought this for my morning jogs, has amazing grip even whilst running.',
+  rating: 5
+},
+{
+  product_id: 4,
+  user_id: 2,
+  title: 'My phone exploded after using this',
+  comment: 'I was super skeptical about the description of this product but it charges my phone in 5 seconds. But I left it for 5 minutes because my wife was mad about something.',
+  rating: 1
+},
+{
+  product_id: 5,
+  user_id: 3,
+  title: 'Dissapointingly below average',
+  comment: 'Gloves are a bit too large for my hands, it also started to break after 3 days of regular usage.',
+  rating: 2
+},
+{
+  product_id: 5,
+  user_id: 1,
+  title: 'GLOVES FIT MY LARGE HANDS',
+  comment: 'AMAZING QUALITY',
+  rating: 5
 }])
 
 p "Created #{Product.count} products"
 p "Created #{User.count} users"
+p "Created #{Review.count} reviews"

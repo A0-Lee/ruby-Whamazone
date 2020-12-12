@@ -3,8 +3,8 @@
 one:
   product: one
   user: one
-  title: MyString
-  comment: MyText
+  title: Review Title
+  comment: Review Text
   rating: 1
 
 two:
