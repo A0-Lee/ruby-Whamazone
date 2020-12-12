@@ -53,7 +53,7 @@ en:
       index_productID_column: "Product ID:"
       index_reviewTitle_column: "Review Title:"
       index_rating_column: "Rating:"
-      index_createAt_column: "Created At:"
+      index_updatedAt_column: "Updated At:"
       index_reviewstars_title1: "This user rated this product"
       index_reviewstars_title2: "out of 5."
       index_linkto_message1: "Got more reviews? We'd love to hear more!"

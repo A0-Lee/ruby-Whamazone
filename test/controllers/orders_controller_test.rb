@@ -8,8 +8,22 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
     @product = products(:one)
   end
 
-  test "should not get index" do
+  test "should get index" do
+    # Should only be accessible if User is logged in
+    post sessions_path, params: {login: {email: 'Test@Mail.com', password: 'test'}}
+
     get orders_url
+    assert_response :success
+
+    assert_template layout: 'application'
+    assert_select 'h1', 'Your Orders'
+    assert_select 'hr'
+  end
+
+  test "should not get index" do
+    # Should only be accessible if User is logged in
+    get orders_url
+    assert_not_empty flash[:alert]
     assert_redirected_to root_path
   end
 
@@ -28,8 +42,17 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to order_url(Order.last)
   end
 
+  test "should show order" do
+    # Order belongs to this users(:two), so they should be able to access this
+    post sessions_path, params: {login: {email: 'Test@Mail.com', password: 'test'}}
+
+    get order_url(@order)
+    assert_response :success
+  end
+
   test "should not show order" do
     get order_url(@order)
+    assert_not_empty flash[:alert]
     assert_redirected_to root_path
   end
 

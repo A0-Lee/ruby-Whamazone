@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  customer_info_id: 1
+  customer_info: two
 
 two:
-  customer_info_id: 2
+  customer_info: two

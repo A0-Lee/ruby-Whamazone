@@ -4,6 +4,20 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @item = items(:one)
     @product = products(:one)
+
+  end
+
+  test "should get index" do
+    # Should only be accessible to admin account
+    post sessions_path, params: {login: {email: 'Admin@Whamazone.com', password: 'WHAM'}}
+
+    get items_url
+    assert_response :success
+
+    assert_template layout: 'application'
+    assert_select 'h1', 'Basket\'s Items'
+    assert_select 'hr'
+
   end
 
   test "should not get index" do

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>My Basket</h1>
+<h1>Basket's Items</h1>
 <hr>
 
 <table>
@@ -17,14 +17,7 @@
       <tr>
         <td><%= item.basket %></td>
         <td><%= item.product %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Item', new_item_path %>

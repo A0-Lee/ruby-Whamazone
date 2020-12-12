@@ -2,7 +2,7 @@
 
 one:
   product: one
-  user: one
+  user: two
   title: Review Title
   comment: Review Text
   rating: 1

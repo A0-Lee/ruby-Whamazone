@@ -34,6 +34,8 @@ Testing and Development:
 -----------------------------------------
 I will be testing this Rails application under the latest released version of Ubuntu Linux 64-bit (using VMware on Windows 10) along with the latest version of the Chrome browser at the time and date of submission.
 
+Please note that there are some unused View files since most Models were generated using the rails generate scaffold command. I've decided to keep these files just in case for future changes/developments.
+
 
 Author Notes:
 -----------------------------------------

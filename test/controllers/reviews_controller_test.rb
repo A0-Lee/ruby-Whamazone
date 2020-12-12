@@ -45,6 +45,13 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to product_url(@product)
   end
 
+  test "should show review" do
+    post users_path, params: {user: {username: 'test', name: 'Mr Test', email: 'test@mail.com', password: 'password', password_confirmation: 'password'}}
+
+    get review_url(@review)
+    assert_response :success
+  end
+
   test "should not show review" do
     get review_url(@review)
     assert_redirected_to root_path

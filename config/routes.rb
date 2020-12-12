@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
   resources :reviews, only: [:index, :show, :edit, :destroy, :create, :update]
 
-  resources :baskets, only: [:index, :show, :new, :create]
+  resources :baskets, only: [:index, :show, :create, :destroy]
   resources :items, only: [:index, :create, :remove_item]
   resources :orders, only: [:index, :show, :new, :create]
   resources :customer_infos, only: [:index, :show, :new, :edit, :create, :update]
