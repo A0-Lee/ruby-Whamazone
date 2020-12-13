@@ -34,8 +34,6 @@ Testing and Development:
 -----------------------------------------
 I will be testing this Rails application under the latest released version of Ubuntu Linux 64-bit (using VMware on Windows 10) along with the latest version of the Chrome browser at the time and date of submission.
 
-Please note that there are some unused View files since most Models were generated using the rails generate scaffold command. I've decided to keep these files just in case for future changes/developments.
-
 
 Author Notes:
 -----------------------------------------
@@ -56,6 +54,8 @@ You can check if the required ruby gems have been successfully installed for thi
 Instructions:
 -----------------------------------------
 This project is developed using Ruby on Rails, most of the setup is written and done for you already which includes dummy accounts and products. You only need to start the website using the terminal command "rails s" or "rails server" in the same project directory.
+
+I highly recommend interacting with all of the website's features, including creating an account, writing a review, buying products, etc. I've also placed a hidden easter egg message if you wish to find it.
 
 Head to http://localhost:3000/ to see and interact with the website application.
 
@@ -81,6 +81,9 @@ Rails uses a Model/Migration system to handle database tables and fields using s
 
 **Note:** The database development.sqlite3 is used by the rails server *whereas* test.sqlite3 is used by rails/rake test.
 
+I have attached a .pdf file named "COM2025 DB Schema" which provides a database schema diagram of all the tables/models used in this project.
+This diagram includes the table names, attributes, primary/foreign keys, and associations/relationships between tables to help you understand the website layout and its models.
+
 Tables:
 - User
 - Product
@@ -103,7 +106,7 @@ Copyright Disclaimer:
 -----------------------------------------
 Any third-party images, audio clips, or assets used during this project is within the Public Domain. This means items such as images are free to use even for commercial purposes. Assets can include any design aspects of the web pages from ruby gems, to fonts, to product images etc.
 
-Direct assets that are borrowed and used for this project are credited where appropriate.
+Direct assets (such as the bootstrap review stars) that are borrowed and used for this project are credited where appropriate.
 
 These will primarily affect the View aspect of the Model-View-Controller template.
 
