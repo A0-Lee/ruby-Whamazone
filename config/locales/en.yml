@@ -146,20 +146,6 @@ en:
       index_destroy_button: "Destroy"
       index_destroy_message: "Are you sure? This cannot be undone."
 
-    edit:
-      edit_title: "Fill in Your Personal Details"
-      edit_customerName: "Full Name:"
-      edit_enter_customerName: "Enter your Full Name"
-      edit_address: "Enter Address:"
-      edit_enter_address: "Enter your Address"
-      edit_city: "Enter City:"
-      edit_enter_city: "Enter your City area"
-      edit_county: "Enter County:"
-      edit_enter_county: "Enter your County/State area"
-      edit_postcode: "Enter Postcode:"
-      edit_enter_postcode: "Enter your Postcode"
-      edit_button: "Continue Checkout"
-
     show:
       show_currency: "£"
       show_image_column: "Image:"

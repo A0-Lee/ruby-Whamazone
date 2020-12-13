@@ -30,8 +30,22 @@ class CustomerInfosController < ApplicationController
         redirect_to root_path
       end
     else
-      flash[:alert] = "You do not have permission to view this."
-      redirect_to root_path
+      # This method is fine if only one person is using the website
+      # If many people are using the website it may become problematic
+      if !(user_logged_in)
+        @recentCustomerInfo = CustomerInfo.last
+        # Ensure that the parameter id and customerInfo id are the same data types
+        # Otherwise it will not equal to each other
+        if params[:id].to_s == @recentCustomerInfo.id.to_s
+          # If it matches then show the order just created
+        else
+          flash[:alert] = "This is not your CustomerInfo."
+          redirect_to root_path
+        end
+      else
+        flash[:alert] = "You do not have permission to view this."
+        redirect_to root_path
+      end
     end
   end
 
@@ -63,8 +77,18 @@ class CustomerInfosController < ApplicationController
         redirect_to root_path
       end
     else
-      flash[:alert] = "You do not have permission to view this."
-      redirect_to root_path
+      if !(user_logged_in)
+        @recentCustomerInfo = CustomerInfo.last
+        if params[:id].to_s == @recentCustomerInfo.id.to_s
+          # If it matches then edit the order just created
+        else
+          flash[:alert] = "This is not your CustomerInfo."
+          redirect_to root_path
+        end
+      else
+        flash[:alert] = "You do not have permission to view this."
+        redirect_to root_path
+      end
     end
   end
 
@@ -106,16 +130,6 @@ class CustomerInfosController < ApplicationController
         format.html { render :edit }
         format.json { render json: @customer_info.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /customer_infos/1
-  # DELETE /customer_infos/1.json
-  def destroy
-    @customer_info.destroy
-    respond_to do |format|
-      format.html { redirect_to customer_infos_url, notice: 'Customer info was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

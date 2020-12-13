@@ -60,18 +60,33 @@ class OrdersController < ApplicationController
         redirect_to root_path
       end
     else
-      flash[:alert] = "Sign into your account to see your orders."
-      redirect_to root_path
+      # This section is for customers buying without a User account
+      if !(user_logged_in)
+        @thisOrder = Order.find(params[:id])
+        @recentCustomerInfo = CustomerInfo.last
+
+        if Basket.exists?(customer_info_id: @recentCustomerInfo.id)
+          @thisBasket = Basket.find_by customer_info_id: @recentCustomerInfo.id
+          if @thisOrder.basket_id == @thisBasket.id
+            # If it matches then show the order just created
+            @matchingBasket = @thisBasket
+          else
+            flash[:alert] = "This is not your CustomerInfo."
+            redirect_to root_path
+          end
+        else
+          flash[:alert] = "Could not find existing basket."
+        end
+      else
+        flash[:alert] = "You do not have permission to view this."
+        redirect_to root_path
+      end
     end
   end
 
   # GET /orders/new
   def new
     @order = Order.new
-  end
-
-  # GET /orders/1/edit
-  def edit
   end
 
   # POST /orders
@@ -172,30 +187,6 @@ class OrdersController < ApplicationController
     else
       redirect_to checkout_details_order_path
       flash[:alert] = "Preferred Delivery Date must be greater than Current Date Time!"
-    end
-  end
-
-  # PATCH/PUT /orders/1
-  # PATCH/PUT /orders/1.json
-  def update
-    respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { render :show, status: :ok, location: @order }
-      else
-        format.html { render :edit }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /orders/1
-  # DELETE /orders/1.json
-  def destroy
-    @order.destroy
-    respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

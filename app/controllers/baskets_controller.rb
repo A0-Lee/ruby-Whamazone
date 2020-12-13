@@ -31,27 +31,10 @@ class BasketsController < ApplicationController
     end
   end
 
-  # GET /baskets/new
-  def new
-    @basket = Basket.new
-  end
-
-  # GET /baskets/1/edit
-  def edit
-    if Basket.exists?(session[:basket_id]) && session[:basket_id] != nil
-      flash[:notice] = "Please enter your details to proceed with checkout."
-    else
-      flash[:alert] = "Could not find Basket Session id."
-      redirect_to root_path
-    end
-  end
-
   # POST /baskets
   # POST /baskets.json
   def create
-
     @basket = Basket.new(basket_params)
-
     respond_to do |format|
       if @basket.save
         format.html { redirect_to @basket, notice: 'Basket was successfully created.' }
@@ -63,19 +46,6 @@ class BasketsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /baskets/1
-  # PATCH/PUT /baskets/1.json
-  def update
-    respond_to do |format|
-      if @basket.update(basket_params)
-        format.html { redirect_to root_path, notice: 'Basket was successfully updated.' }
-        format.json { render :show, status: :ok, location: @basket }
-      else
-        format.html { render :edit }
-        format.json { render json: @basket.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   # DELETE /baskets/1
   # DELETE /baskets/1.json
