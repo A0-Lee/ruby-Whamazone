@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
 
   # This method is used in the orders_controller to check the card and svc number fields
   def is_string_number? string
-    # Returns true if string is a number, else it is rescued by false
+    # Returns true if string is a number, else it is rescued by false (or else it will give an error)
       true if Float(string) rescue false
     end
   end

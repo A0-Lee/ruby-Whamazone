@@ -6,8 +6,12 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get root_path
+    get products_url
     assert_response :success
+
+    assert_template layout: 'application'
+    assert_select 'h1', 'All Whamazone Products'
+    assert_select 'hr'
   end
 
 

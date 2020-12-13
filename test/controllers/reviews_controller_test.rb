@@ -46,6 +46,7 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show review" do
+    # Any user can review a specific review id page as long as they are logged in
     post users_path, params: {user: {username: 'test', name: 'Mr Test', email: 'test@mail.com', password: 'password', password_confirmation: 'password'}}
 
     get review_url(@review)
@@ -53,11 +54,21 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not show review" do
+    # Should not show review as user is not logged in
     get review_url(@review)
     assert_redirected_to root_path
   end
 
+  test "should get edit" do
+    # @review belongs to users(:two), so we login to this account to edit this review
+    post sessions_path, params: {login: {email: 'Test@Mail.com', password: 'test'}}
+
+    get edit_review_url(@review)
+    assert_response :success
+  end
+
   test "should not get edit" do
+    # Only the user who wrote this review can edit it
     get edit_review_url(@review)
     assert_redirected_to root_path
   end

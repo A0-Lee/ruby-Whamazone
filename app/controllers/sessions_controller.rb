@@ -41,6 +41,7 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     # Set the session basket id to null (basket session tied to user id)
     session[:basket_id] = nil
+    
     flash[:notice] = I18n.t('sessions.login.logout_successful')
     redirect_to root_path
   end

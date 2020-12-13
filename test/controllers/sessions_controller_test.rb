@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class SessionsControllerTest < ActionDispatch::IntegrationTest
+
+  setup do
+    @user = users(:two)
+  end
+
   test "should get login" do
     get user_login_url
     assert_response :success
@@ -11,28 +16,32 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'form input', 5
   end
 
-  test "user should login" do
-    # Create a new user using sign-up form
-    post users_path, params: {user: {username: 'test', name: 'Mr Test', email: 'test@mail.com', password: 'password', password_confirmation: 'password'}}
-    # Login new user using login form
-    post sessions_path, params: {login: {email: 'test@mail.com', password: 'password'}}
+  test "should login user" do
+    # Login using users(:two) in the users.yml fixture
+    post sessions_path, params: {login: {email: 'Test@Mail.com', password: 'test'}}
     assert_redirected_to root_path
     assert_not_empty flash[:notice]
   end
 
-  test "user should not login" do
-    # Login non-existing user using login form
-    post sessions_path, params: {login: {email: 'test@mail.com', password: 'password'}}
+  test "should not login user" do
+    # Attempt login using the wrong password
+    post sessions_path, params: {login: {email: 'Test@Mail.com', password: 'wrongPassword'}}
+    assert_redirected_to user_login_path
+    assert_not_empty flash[:alert]
+
+    # Attempt login using a non-existent user account
+    post sessions_path, params: {login: {email: 'nonExistent@Mail.com', password: 'password'}}
     assert_redirected_to user_login_path
     assert_not_empty flash[:alert]
   end
 
-  test "user should logout" do
-    # Create a new user using sign-up form
-    post users_path, params: {user: {username: 'test', name: 'Mr Test', email: 'test@mail.com', password: 'password', password_confirmation: 'password'}}
+  test "should logout user" do
+    # Login user as normal
+    post sessions_path, params: {login: {email: 'Test@Mail.com', password: 'test'}}
+    assert_redirected_to root_path
+    assert_not_empty flash[:notice]
     # Logout user
     get user_logout_path
-
     assert_redirected_to root_path
     assert_not_empty flash[:notice]
   end

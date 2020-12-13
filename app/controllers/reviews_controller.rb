@@ -21,8 +21,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/1
   # GET /reviews/1.json
   def show
-    if user_logged_in
-    else
+    if !(user_logged_in)
       flash[:alert] = "You do not have permission to view this."
       redirect_to root_path
     end

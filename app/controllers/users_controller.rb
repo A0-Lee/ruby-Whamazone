@@ -1,16 +1,21 @@
 class UsersController < ApplicationController
   def signup
+    if user_logged_in
+      flash[:alert] = "Logout first to create a new account."
+      redirect_to root_path
+    end
   end
 
   def account
     # Redirect to root page if user is not logged in
-    if !user_logged_in
+    if !(user_logged_in)
+      flash[:alert] = "Login to your account to access this page."
       redirect_to root_path
     end
   end
 
   def edit
-    if !user_logged_in
+    if !(user_logged_in)
       redirect_to root_path
     else
       # Get the user's attribute details to edit
@@ -50,12 +55,13 @@ class UsersController < ApplicationController
     # And check if desired email already exists in the database too - except their own email
     @checkEmail = User.where.not(email: params[:user][:email]).exists?
     if @user.valid? && @checkUsername && @checkEmail
-      @user.update(user_params)
-      flash[:notice] = I18n.t('users.edit.edit_success')
-      redirect_to root_path
-    else
-      flash[:error] = I18n.t('users.edit.edit_fail')
-      redirect_to user_edit_path
+      if @user.update(user_params)
+        flash[:notice] = I18n.t('users.edit.edit_success')
+        redirect_to root_path
+      else
+        flash[:alert] = I18n.t('users.edit.edit_fail')
+        redirect_to user_edit_path
+      end
     end
   end
 
