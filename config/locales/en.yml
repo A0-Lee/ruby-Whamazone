@@ -325,8 +325,9 @@ en:
       home_event4: "Thank you for shopping with us, Whamazone customer!"
       home_event5: "Enjoying your new product? Leave a quick review!"
       home_event6: "Tell your friends about Whamazone!"
-      home_event7: "Our business practices are more ethical compared to our competitors!"
+      home_event7: "I (really) hope this website works as intended!"
       home_event8: "Don't forget to wash your hands clean!"
+      home_event9: "If you are reading this, have an excellent day!"
 
     about:
       about_title: "About Us"
@@ -367,8 +368,8 @@ en:
       contact_cardtitle2: "Customer Support"
       contact_question1: "Where can I contact Customer Support?"
       contact_answer1: "You can contact us by filling out our Customer Form using the link below:"
-      contact_question2: "Where is my purchase order receipt/email?"
-      contact_answer2: "We don't show any order confirmation!"
+      contact_question2: "Where can I see my previous orders?"
+      contact_answer2: "You must first login to your account to see your purchase history."
       contact_question3: "When will my parcel arrive?"
       contact_answer3: "At Whamazone, we're experimenting with new technology that will bring the digitalization of goods through your own computer screen!"
       contact_question4: "How can I cancel my recently placed order?"

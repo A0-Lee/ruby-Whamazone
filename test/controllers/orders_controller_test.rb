@@ -50,11 +50,4 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should not show order" do
-    get order_url(@order)
-    assert_not_empty flash[:alert]
-    assert_redirected_to root_path
-  end
-
-
 end

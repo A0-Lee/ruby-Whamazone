@@ -71,7 +71,7 @@ class OrdersController < ApplicationController
             # If it matches then show the order just created
             @matchingBasket = @thisBasket
           else
-            flash[:alert] = "This is not your CustomerInfo."
+            flash[:alert] = "This Order does not belong to you."
             redirect_to root_path
           end
         else
