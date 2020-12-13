@@ -16,8 +16,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_select 'p', 'We offer several benefits towards being an existing customer:'
     # Check if form exists
     assert_select 'form', true
-    # Note that the submit button and the hidden utf8 name counts as input fields, as well as the search bar in header
-    assert_select 'form input', 8
+    # Note that the submit button and the hidden utf8 name counts as input fields
+    assert_select 'form input', 7
   end
 
   test "should not get signup" do
@@ -62,7 +62,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_template layout: 'application'
     assert_select 'h1', 'Edit your Whamazone Account'
     assert_select 'form', true
-    assert_select 'form input', 8
+    assert_select 'form input', 7
   end
 
   test "should not get account edit" do

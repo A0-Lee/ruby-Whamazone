@@ -2,10 +2,6 @@ require 'test_helper'
 
 class SessionsControllerTest < ActionDispatch::IntegrationTest
 
-  setup do
-    @user = users(:two)
-  end
-
   test "should get login" do
     get user_login_url
     assert_response :success
@@ -13,7 +9,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_template layout: 'application'
     assert_select 'h1', 'Login with your Whamazone Account'
     assert_select 'form', true
-    assert_select 'form input', 5
+    assert_select 'form input', 4
   end
 
   test "should login user" do

@@ -80,6 +80,7 @@ class ItemsController < ApplicationController
       # Increment the stock quantity of the current product by 1 (as you can only remove 1 product at a time)
       product.quantityInStock += 1
       product.save
+
       flash[:notice] = "Item was successfully removed."
       redirect_to @basket
     else

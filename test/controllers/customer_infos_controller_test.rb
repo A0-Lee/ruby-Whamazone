@@ -35,8 +35,8 @@ class CustomerInfosControllerTest < ActionDispatch::IntegrationTest
     assert_select 'hr'
     # Check if form exists
     assert_select 'form', true
-    # Note that the submit button and the hidden utf8 name counts as input fields, as well as the search bar in header
-    assert_select 'form input', 9
+    # Note that the submit button and the hidden utf8 name counts as input fields
+    assert_select 'form input', 8
   end
 
   test "should create customer_info" do

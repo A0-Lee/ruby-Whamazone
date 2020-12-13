@@ -38,7 +38,7 @@
         <b><%=t('.show_category')%></b>
         <%= @product.category %></p>
       <hr>
-        <%= button_to t('.show_add_to_basket'), items_path(product_id: @product), params: { quantityOrdered: '1'}, class: "btn btn-primary" %>
+        <%= button_to t('.show_add_to_basket'), items_path(product_id: @product.id), params: { quantityOrdered: '1'}, class: "btn btn-primary" %>
       <br>
       <%= link_to 'Back', :back %>
     </div>
